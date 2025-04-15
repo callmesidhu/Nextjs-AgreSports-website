@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
-
+import { metalMania } from "../fonts/metalMania"
 export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -129,14 +129,13 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              <span className="text-white">Dominate The </span>
-              <span className="text-[#a903fc]">Game</span>
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0">
+              <span className={metalMania.className}>Dominate The </span>
+              <span className={`${metalMania.className} text-[#a903fc]`}>Game</span>
+              </h1>
+            <p className={metalMania.className}>
               Join us on our journey to the top of competitive gaming. We are a professional esports organization
               competing at the highest level.
             </p>
-          
           </div>
           <div className="relative h-[300px] md:h-[400px] lg:h-[500px] w-full">
             <Image src="/placeholder.svg?height=500&width=500" alt="Gaming Team" fill className="object-contain" />
