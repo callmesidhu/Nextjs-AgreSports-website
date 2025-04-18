@@ -1,9 +1,8 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Image from "next/image"
-import { ArrowRight } from "lucide-react"
 import { metalMania } from "../fonts/metalMania"
+import Header from "../Header/header"
 export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -120,10 +119,10 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-28">
       {/* Particle Background */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
-
+      {/*Header section*/}
       {/* Hero Content */}
       <div className="container mx-auto px-4 z-10 pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -131,14 +130,14 @@ export default function HeroSection() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               <span className={metalMania.className}>Dominate The </span>
               <span className={`${metalMania.className} text-[#a903fc]`}>Game</span>
-              </h1>
+            </h1>
             <p className={metalMania.className}>
               Join us on our journey to the top of competitive gaming. We are a professional esports organization
               competing at the highest level.
             </p>
           </div>
           <div className="relative h-[300px] md:h-[400px] lg:h-[500px] w-full">
-            <Image src="/placeholder.svg?height=500&width=500" alt="Gaming Team" fill className="object-contain" />
+            {/* <Image src="/placeholder.svg?height=500&width=500" alt="Gaming Team" fill className="object-contain" /> */}
 
             {/* Decorative Elements */}
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#a903fc]/20 rounded-full blur-3xl"></div>
