@@ -9,31 +9,33 @@ import {
   TimelineConnector,
   TimelineContent,
   TimelineDot,
-  TimelineOppositeContent
+  TimelineOppositeContent,
 } from '@mui/lab'
 import Typography from '@mui/material/Typography'
 import StarIcon from '@mui/icons-material/Star'
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
 import FlashOnIcon from '@mui/icons-material/FlashOn'
-
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { useTheme } from '@mui/material/styles'
+import { Card, CardContent } from '@mui/material'
 
 const timelineData = [
   {
     year: '2012',
     title: 'lorem1',
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit. Vel, vitae! Ea impedit perferendis fugiat cupiditate ratione laborum culpa officia laudantium quis.`,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit.`,
     icon: <StarIcon />,
   },
   {
     year: '2014',
     title: 'lorem2',
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit. Vel, vitae! Ea impedit perferendis fugiat cupiditate ratione laborum culpa officia laudantium quis.`,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit.`,
     icon: <EmojiEventsIcon />,
   },
   {
     year: '2016',
     title: 'lorem3',
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit. Vel, vitae! Ea impedit perferendis fugiat cupiditate ratione laborum culpa officia laudantium quis.`,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit.`,
     icon: <FlashOnIcon />,
   },
 ]
@@ -52,63 +54,106 @@ const fadeInUp = {
 }
 
 export default function TimelineWithAnimation() {
+  const theme = useTheme()
+  const isMobile = useMediaQuery('(max-width: 395px)')
+
   return (
-      <section className="relative text-white py-20 px-4 md:px-16 overflow-hidden">
-      {/* Grid background layer */}
+    <section className="relative text-white py-20 px-4 sm:px-10 md:px-16 lg:px-28 overflow-hidden">
+      {/* Background dots */}
       <div
-            className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"
-            style={{
-                  backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
-                  backgroundSize: '20px 20px',
-            }}
+        className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"
+        style={{
+          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+        }}
       />
-
       <style jsx>{`
-            @keyframes dotsMove {
-            0% {
-                  background-position: 0 0;
-            }
-            100% {
-                  background-position: 40px 40px;
-            }
-            }
-      `}
-      </style>
-      <Timeline position="alternate">
-        {timelineData.map((item, i) => (
-          <TimelineItem key={i}>
-            <TimelineOppositeContent
-              sx={{ m: 'auto 0' }}
-              align={i % 2 === 0 ? 'right' : 'left'}
-              variant="body2"
-              color="gray"
-            >
-              {item.year}
-            </TimelineOppositeContent>
+        @keyframes dotsMove {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 40px 40px;
+          }
+        }
+      `}</style>
 
-            <TimelineSeparator>
-              <TimelineConnector />
-              <TimelineDot color="secondary">{item.icon}</TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-
-            <TimelineContent sx={{ py: '12px', px: 2 }}>
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                variants={fadeInUp}
+      {/* Large Screen Timeline */}
+      {!isMobile ? (
+        <Timeline position="alternate" className="relative z-10">
+          {timelineData.map((item, i) => (
+            <TimelineItem key={i}>
+              <TimelineOppositeContent
+                sx={{ m: 'auto 0' }}
+                align={i % 2 === 0 ? 'right' : 'left'}
+                variant="body2"
+                color="gray"
               >
-                <Typography variant="h6" component="span" sx={{ color: 'white' }}>
-                  {item.title}
-                </Typography>
-                <Typography sx={{ color: '#aaa' }}>{item.description}</Typography>
-              </motion.div>
-            </TimelineContent>
-          </TimelineItem>
-        ))}
-      </Timeline>
+                {item.year}
+              </TimelineOppositeContent>
+
+              <TimelineSeparator>
+                <TimelineConnector />
+                <TimelineDot color="secondary">{item.icon}</TimelineDot>
+                <TimelineConnector />
+              </TimelineSeparator>
+
+              <TimelineContent sx={{ py: '12px', px: 2 }}>
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  custom={i}
+                  variants={fadeInUp}
+                >
+                  <Typography variant="h6" sx={{ color: 'white' }}>
+                    {item.title}
+                  </Typography>
+                  <Typography sx={{ color: '#aaa' }}>{item.description}</Typography>
+                </motion.div>
+              </TimelineContent>
+            </TimelineItem>
+          ))}
+        </Timeline>
+      ) : (
+        // Small Screen Card Layout
+        <div className="flex flex-col gap-6 relative z-10">
+          {timelineData.map((item, i) => (
+            <motion.div
+              key={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={i}
+              variants={fadeInUp}
+            >
+              <Card
+                sx={{
+                  backgroundColor: '#1a1a1a',
+                  borderLeft: '4px solid #a903fc',
+                  borderRadius: '12px',
+                }}
+                elevation={3}
+              >
+                <CardContent>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-[#a903fc]">{item.icon}</span>
+                    <Typography variant="h6" sx={{ color: '#fff', fontWeight: 600 }}>
+                      {item.title}
+                    </Typography>
+                  </div>
+                  <Typography variant="body2" sx={{ color: '#bbb' }}>
+                    {item.description}
+                  </Typography>
+                  <Typography variant="caption" sx={{ color: '#888', display: 'block', marginTop: '8px' }}>
+                    {item.year}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      )}
     </section>
   )
 }
