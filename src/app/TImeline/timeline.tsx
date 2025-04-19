@@ -80,7 +80,7 @@ export default function TimelineWithAnimation() {
 
       {/* Large Screen Timeline */}
       {!isMobile ? (
-        <Timeline position="alternate" className="relative z-10">
+        <Timeline position="alternate" className="relative z-10" sx={{ padding: 0 }}>
           {timelineData.map((item, i) => (
             <TimelineItem key={i}>
               <TimelineOppositeContent
@@ -93,12 +93,38 @@ export default function TimelineWithAnimation() {
               </TimelineOppositeContent>
 
               <TimelineSeparator>
-                <TimelineConnector />
-                <TimelineDot color="secondary">{item.icon}</TimelineDot>
-                <TimelineConnector />
+                <TimelineConnector
+                  sx={{
+                    height: '80px',
+                    backgroundColor: '#a903fc',
+                    width: '3px',
+                  }}
+                />
+                {/* Centering the icon in the dot */}
+                <TimelineDot
+                  sx={{
+                    backgroundColor: '#a903fc',
+                    boxShadow: '0 0 10px #a903fc',
+                    width: '40px',
+                    height: '40px',
+                    zIndex: 1,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  {React.cloneElement(item.icon, { sx: { color: 'white' } })}
+                </TimelineDot>
+                <TimelineConnector
+                  sx={{
+                    height: '80px',
+                    backgroundColor: '#a903fc',
+                    width: '3px',
+                  }}
+                />
               </TimelineSeparator>
 
-              <TimelineContent sx={{ py: '12px', px: 2 }}>
+              <TimelineContent sx={{ py: '40px', px: 2 }}>
                 <motion.div
                   initial="hidden"
                   whileInView="visible"
@@ -118,6 +144,9 @@ export default function TimelineWithAnimation() {
       ) : (
         // Small Screen Card Layout
         <div className="flex flex-col gap-6 relative z-10">
+          {/* Vertical line for mobile */}
+          <div className="absolute left-[16px] top-0 bottom-0 w-[2px] bg-[#a903fc] opacity-50" />
+
           {timelineData.map((item, i) => (
             <motion.div
               key={i}
@@ -126,12 +155,19 @@ export default function TimelineWithAnimation() {
               viewport={{ once: true }}
               custom={i}
               variants={fadeInUp}
+              className="relative"
             >
+              {/* Timeline dot for mobile */}
+              <div className="absolute left-[6px] top-6 w-5 h-5 bg-[#a903fc] rounded-full flex items-center justify-center z-10 shadow-[0_0_10px_#a903fc]">
+                <div className="w-2 h-2 bg-white rounded-full" />
+              </div>
+
               <Card
                 sx={{
                   backgroundColor: '#1a1a1a',
                   borderLeft: '4px solid #a903fc',
                   borderRadius: '12px',
+                  marginLeft: '32px',
                 }}
                 elevation={3}
               >

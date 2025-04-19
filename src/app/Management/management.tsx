@@ -149,7 +149,7 @@ export default function ManagementTeam() {
           perspective: '1000px',
           transformStyle: 'preserve-3d',
         }}
-        className="flex flex-col items-center justify-end p-4 rounded-lg z-10 transform sm:scale-125 md:scale-130 lg:scale-150 xl:scale-100 2xl:scale-100"
+        className="flex flex-col items-center justify-end p-4 rounded-lg z-10 transform sm:scale-125 md:scale-130 lg:scale-150 xl:scale-100 2xl:scale-140"
       >
         <div className="overflow-hidden rounded-lg shadow-lg">
           <Image

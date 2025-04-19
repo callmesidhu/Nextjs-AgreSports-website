@@ -6,6 +6,7 @@ import TimelineWithAnimation from './TImeline/timeline'
 import ManagementTeam from './Management/management'
 import Footer from './Footer/footer'
 import { metalMania } from "./fonts/metalMania";
+import AchievementsPage from "./Achievement/achievement";
 
 export default function Home() {
   return (
@@ -14,7 +15,8 @@ export default function Home() {
        <Header/>
        <HeroSection />
        <Title mainTitle="our" subTitle="achievements"/>
-       <About/>
+       {/* <About/> */}
+       <AchievementsPage/>
        <Title mainTitle="our" subTitle="journey"/>
        <TimelineWithAnimation/>
        <Title mainTitle="management" subTitle="team"/>
