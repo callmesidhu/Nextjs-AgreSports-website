@@ -119,7 +119,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-28">
+    <div className="Home relative min-h-screen flex items-center justify-center overflow-hidden px-28">
       {/* Particle Background */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
       {/*Header section*/}
