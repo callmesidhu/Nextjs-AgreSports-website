@@ -29,11 +29,15 @@ const teamMembers = [
 export default function ManagementPage() {
   return (
     <>
-      <Header/>
-      <main className="relative bg-black min-h-screen text-white px-4 md:px-12 py-12 pt-42 overflow-hidden">
+<main className="relative bg-black min-h-screen text-white px-4 md:px-12 py-12 pt-42 overflow-hidden">
   {/* Animated Dots Background */}
-  <div className="absolute inset-0 bg-dots z-0"></div>
-
+  <div
+        className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"
+        style={{
+          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+        }}
+      />
   {/* Content above background */}
   <div className="relative z-10">
     <section className="text-center max-w-3xl mx-auto mb-16 pb-20">
@@ -69,7 +73,6 @@ export default function ManagementPage() {
     </section>
   </div>
 </main>
-    <Footer/>
     </>
   );
 }

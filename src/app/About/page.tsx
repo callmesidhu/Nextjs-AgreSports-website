@@ -3,7 +3,7 @@ import image from '../assests/aboutImage.png';
 
 export default function About() {
   return (
-    <section id="about" className=" text-white px-6 sm:px-10 md:px-16 lg:px-28 pt-12 sm:pt-16">
+    <section id="about" className=" text-white px-6 sm:px-10 md:px-16 lg:px-28 pt-12 sm:pt-16 w-screen h-screen flex justify-center items-center">
       <div className="flex flex-col md:flex-row items-center gap-10">
         
         {/* Left: Text Content */}

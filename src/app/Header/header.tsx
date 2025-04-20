@@ -9,20 +9,22 @@ import image from '../assests/agrLogo.png';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks = ["Home", "Team", "Management","About Us"];
+  const navLinks = ["Team", "Management","About"];
 
   return (
     <header className={`fixed top-0 left-0 w-full z-50 bg-black backdrop-blur-md`}>
       <div className="flex items-center justify-between px-6 sm:px-10 md:px-16 lg:px-24 py-0 sm:py-0 md:py-3">
         {/* <h2 className="text-xl sm:text-2xl font-bold text-[#a903fc]">AGR ESPORTS</h2>       */}
-        <Image src={image} alt="no image" className=" w-24"></Image>
+        <a href="/">
+          <Image src={image} alt="no image" className="w-24"></Image>
+        </a>
         {/* Desktop nav */}
         <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
         <nav className="flex space-x-14">
           {navLinks.map((item) => (
             <a
               key={item}
-              href={`#${item.toLowerCase()}`}
+              href={`/${item}`}
               className="text-white text-lg transition duration-300 relative group"
             >
               {item}

@@ -2,18 +2,17 @@ import HeroSection from "./Hero/Hero";
 import Title from "./Title/title";
 import Header from "./Header/header";
 import TimelineWithAnimation from './TImeline/timeline'
-import ManagementTeam from './Management/management'
+import ManagementTeam from './Management/page'
 import Footer from './Footer/footer'
 import { metalMania } from "./fonts/metalMania";
 import AchievementsPage from "./Achievement/achievement";
 import LatestVideos from "./latestvideos/LatestVideos";
-import Lineup from "./Lineup/lineup";
+import Lineup from "./Team/page";
 
 export default function Home() {
   return (
    
     <div className={`text-xl`}>  
-       <Header/>
        <HeroSection />
        <Title mainTitle="our" subTitle="achievements"/>
        <AchievementsPage/>
@@ -21,7 +20,6 @@ export default function Home() {
        <TimelineWithAnimation/>
        <Title mainTitle="Latest" subTitle="Videos"/>
        <LatestVideos />
-       <Footer/> 
        {/* 
        <ManagementTeam/>
        <Lineup/> 

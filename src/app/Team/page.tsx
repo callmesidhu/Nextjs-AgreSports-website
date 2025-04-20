@@ -15,11 +15,15 @@ export default function Lineup() {
 
   return (
     <>
-      <Header />
       <div className="relative min-h-screen bg-black text-white pt-32 overflow-hidden">
         {/* Dots Background */}
-        <div className="absolute inset-0 bg-dots z-0"></div>
-
+        <div
+        className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"
+        style={{
+          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+        }}
+      />
         {/* Content */}
         <div className="relative z-10">
           {/* VALORANT LOGO */}
@@ -48,7 +52,6 @@ export default function Lineup() {
           </section>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
