@@ -63,10 +63,9 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} `}>
       <head>
       <link rel="icon" href="/favicon.ico" sizes="any" />
-      <meta property="og:title" content="AgreSports - Your Ultimate Sports Hub" />
-        <meta property="og:description" content="Stay updated with the latest sports news, videos, and events. AgreSports is your one-stop destination for all things sports." />
-        <meta property="og:image" content="https://agresports.com/logo.png" />
-        <meta property="og:url" content="https://agresports.com" />
+      
+        <meta property="og:image" content="https://agresports.org/logo.png" />
+        <meta property="og:url" content="https://agresports.org" />
         <meta property="og:type" content="website" />
       </head>
       <body className="font-sans">
