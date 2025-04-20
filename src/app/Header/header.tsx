@@ -9,7 +9,7 @@ import image from '../assests/agrLogo.png';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks = ["Home", "Team", "Management","Contact"];
+  const navLinks = ["Home", "Team", "Management","About Us"];
 
   return (
     <header className={`fixed top-0 left-0 w-full z-50 bg-black backdrop-blur-md`}>
