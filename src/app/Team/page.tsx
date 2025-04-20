@@ -33,7 +33,7 @@ export default function Lineup() {
 
           {/* L1 */}
           <section className="text-center mb-12 py-16 pb-28">
-            <h3 className="text-3xl font-bold mb-4 pb-10">L1</h3>
+            <h3 className="text-3xl font-bold mb-4 pb-10">L-1</h3>
             <div className="flex flex-wrap justify-center gap-6">
               {players.map((player, idx) => (
                 <FlipCard key={`l1-${idx}`} name={player.name} role={player.role} />

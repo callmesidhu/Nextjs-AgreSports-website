@@ -14,7 +14,7 @@ export default function Title({ mainTitle, subTitle }: TitleProps) {
         pt-12 sm:pt-20 md:pt-28 
         text-2xl sm:text-3xl md:text-4xl bg-black `}
     >
-      <span className="text-[#a903fc]">
+      <span className="text-[#7C02E0]">
         {mainTitle} <span className="text-neutral-50">{subTitle}__</span>
       </span>
     </div>

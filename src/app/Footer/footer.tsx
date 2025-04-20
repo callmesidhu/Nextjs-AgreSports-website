@@ -2,7 +2,7 @@ import { FaFacebookF, FaYoutube, FaTwitter, FaInstagram, FaWordpress } from "rea
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-purple-800 to-purple-900 text-white px-6 py-12 border-t border-purple-700">
+    <footer className="bg-[#7C02E0] text-white px-6 py-12 border-t border-purple-700">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between gap-10">
         {/* Contact Section */}
         <div>
