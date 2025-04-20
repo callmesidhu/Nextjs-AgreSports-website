@@ -25,16 +25,16 @@ export const metadata: Metadata = {
   title: "AgreSports - Your Ultimate Sports Hub",
   description: "Stay updated with the latest sports news, videos, and events. AgreSports is your one-stop destination for all things sports.",
   keywords: ["sports", "videos", "news", "events", "AgreSports"],
-  authors: [{ name: "AgreSports Team", url: "https://agresports.com" }],
+  authors: [{ name: "AgreSports Team", url: "https://agresports.org" }],
   themeColor: "#4A90E2",
   openGraph: {
     title: "AgreSports - Your Ultimate Sports Hub",
     description: "Stay updated with the latest sports news, videos, and events. AgreSports is your one-stop destination for all things sports.",
-    url: "https://agresports.com",
+    url: "https://agresports.org",
     siteName: "AgreSports",
     images: [
       {
-        url: "https://agresports.com/logo.png",
+        url: "https://agresports.org/logo.png",
         width: 1200,
         height: 630,
         alt: "AgreSports - Your Ultimate Sports Hub",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AgreSports - Your Ultimate Sports Hub",
     description: "Stay updated with the latest sports news, videos, and events. AgreSports is your one-stop destination for all things sports.",
-    images: ["https://agresports.com/logo.png"],
+    images: ["https://agresports.org/logo.png"],
   },
   icons: {
     icon: "/favicon.ico",
