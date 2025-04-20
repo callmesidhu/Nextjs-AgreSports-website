@@ -22,30 +22,29 @@ const metalMania = Metal_Mania({
 });
 
 export const metadata: Metadata = {
-  title: "AgreSports - Your Ultimate Sports Hub",
-  description: "Stay updated with the latest sports news, videos, and events. AgreSports is your one-stop destination for all things sports.",
+  title: "AgreSports | AGR Gaming, Esports News & Kerala's Top Esports Team",
+  description:
+    "AgreSports is the ultimate esports platform for AGR fans. Explore esports news, Valorant updates, tournaments, and Kerala's best gaming community.",
   keywords: [
-    "AgreSports", "agr esports", "agr valorant", "agr valo", "agr gaming",
-    "esports malayalam", "valorant malayalam", "valo malayalam",
-    "best malayalam gaming community", "best esports in kerala",
-    "kerala gaming tournament", "kerala gaming community",
-    "eagle gaming", "best esports community in kerala",
-    "esports in india", "esports india", "esports world cup", "indian esports",
-    "e sports in india", "esports gaming", "e sports game", "esports game", "esports games",
-    "league of legends esports", "lol esports", "lol championship",
-    "esports live", "live esports", "esports lol",
-    "tournament app", "e sports tournament", "esports tournament", "esports tournaments",
-    "what are esports", "what is esports", "esports meaning", "what's e sports",
-    "gaming tournament", "gaming sports", "gaming tournaments",
-    "games tournament", "game tournaments", "video gaming tournaments",
-    "esports full form", "e sports full form",
-    "esport app", "esports tournament app", "gaming competition", "e-sports app"
+    "AgreSports", "agresports", "AGR", "AGR Esports", "AGR Gaming", "agr esports", "agr valorant", "agr valo",
+    "agr esports kerala valorant team", "what is agr esports", "how to join agr gaming team", 
+    "kerala esports tournaments 2025", "esports community in kerala", "agresports official website", 
+    "agr gaming community", "agr gaming team valorant", "join agr esports", "agr kerala gaming",
+    "esports malayalam", "valorant malayalam", "kerala esports", "kerala gaming community",
+    "best malayalam gaming community", "top esports team in Kerala", "AGR Esports Kerala",
+    "AGR India", "Indian esports", "e sports in India", "esports gaming", "gaming news",
+    "gaming tournaments", "esports tournaments", "AGR tournaments", "gaming competitions",
+    "tournament app", "AGR Valorant", "valorant AGR", "Malayalam esports team",
+    "esports full form", "esports meaning", "e-sports games", "esports games", "live esports",
+    "League of Legends esports", "LOL AGR", "AGR LOL team", "AGR gaming news", "esports world cup",
+    "gaming sports", "AGR esports live", "esport app", "e-sports app", "AGR esports tournaments"
   ],
   authors: [{ name: "AgreSports Team", url: "https://agresports.org" }],
   themeColor: "#4A90E2",
   openGraph: {
-    title: "AgreSports - Your Ultimate Sports Hub",
-    description: "Stay updated with the latest sports news, videos, and events. AgreSports is your one-stop destination for all things sports.",
+    title: "AgreSports | AGR Gaming, Esports News & Kerala's Top Esports Team",
+    description:
+      "Join AGR Gaming and the AgreSports community for all things esports. From Valorant to tournaments, get the latest in gaming from Kerala to the world.",
     url: "https://agresports.org",
     siteName: "AgreSports",
     images: [
@@ -53,7 +52,7 @@ export const metadata: Metadata = {
         url: "https://agresports.org/logo.png",
         width: 1200,
         height: 630,
-        alt: "AgreSports - Your Ultimate Sports Hub",
+        alt: "AgreSports - AGR Esports & Gaming Community",
       },
     ],
     locale: "en_US",
@@ -61,8 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AgreSports - Your Ultimate Sports Hub",
-    description: "Stay updated with the latest sports news, videos, and events. AgreSports is your one-stop destination for all things sports.",
+    title: "AgreSports | AGR Esports & Gaming News",
+    description:
+      "Stay updated with AGR esports news, gaming tournaments, and Valorant highlights. AgreSports is Kerala’s leading esports platform.",
     images: ["https://agresports.org/logo.png"],
   },
   icons: {
