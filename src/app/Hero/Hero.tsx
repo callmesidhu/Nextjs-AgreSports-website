@@ -1,150 +1,89 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { metalMania } from "../fonts/metalMania"
-import Header from "../Header/header"
+import { useState, useEffect } from "react";
+import { metalMania } from "../fonts/metalMania";
+import Header from "../Header/header";
+
+const carouselImages = [
+  "./agr.webp", // Replace with your actual image paths
+  "/agr.webp",
+  "/agr.webp",
+];
+
 export default function HeroSection() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [textVisible, setTextVisible] = useState(true);
 
+  // Handle carousel transitions
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const interval = setInterval(() => {
+      setTextVisible(false);
+      
+      // Wait for text fade out before changing slide
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+        
+        // Show text again with animation after slide changes
+        setTimeout(() => {
+          setTextVisible(true);
+        }, 300);
+      }, 700);
+    }, 5000); // Change slide every 5 seconds
 
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    // Set canvas dimensions
-    const setCanvasDimensions = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-
-    setCanvasDimensions()
-    window.addEventListener("resize", setCanvasDimensions)
-
-    // Particle class
-    class Particle {
-      x: number
-      y: number
-      size: number
-      speedX: number
-      speedY: number
-      color: string
-
-      constructor() {
-        this.x = Math.random() * (canvas?.width || 0)
-        this.y = Math.random() * (canvas?.height || 0)
-        this.size = Math.random() * 3 + 1
-        this.speedX = Math.random() * 1 - 0.5
-        this.speedY = Math.random() * 1 - 0.5
-        this.color = `rgba(169, 3, 252, ${Math.random() * 0.5 + 0.2})`
-      }
-
-      update() {
-        this.x += this.speedX
-        this.y += this.speedY
-
-        if (canvas && (this.x < 0 || this.x > canvas.width)) {
-          this.speedX = -this.speedX
-        }
-
-        if (canvas && (this.y < 0 || this.y > canvas.height)) {
-          this.speedY = -this.speedY
-        }
-      }
-
-      draw() {
-        if (!ctx) return
-        ctx.fillStyle = this.color
-        ctx.beginPath()
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-        ctx.fill()
-      }
-    }
-
-    // Create particles
-    const particles: Particle[] = []
-    const particleCount = Math.min(100, Math.floor(window.innerWidth / 20))
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle())
-    }
-
-    // Animation loop
-    const animate = () => {
-      if (!ctx) return
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      // Update and draw particles
-      particles.forEach((particle) => {
-        particle.update()
-        particle.draw()
-      })
-
-      // Connect particles with lines
-      connectParticles()
-
-      requestAnimationFrame(animate)
-    }
-
-    // Connect particles with lines if they are close enough
-    const connectParticles = () => {
-      if (!ctx) return
-      const maxDistance = 150
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x
-          const dy = particles[i].y - particles[j].y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-
-          if (distance < maxDistance) {
-            const opacity = 1 - distance / maxDistance
-            ctx.strokeStyle = `rgba(169, 3, 252, ${opacity * 0.2})`
-            ctx.lineWidth = 1
-            ctx.beginPath()
-            ctx.moveTo(particles[i].x, particles[i].y)
-            ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.stroke()
-          }
-        }
-      }
-    }
-
-    animate()
-
-    return () => {
-      window.removeEventListener("resize", setCanvasDimensions)
-    }
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="Home relative min-h-screen flex items-center justify-center overflow-hidden px-28">
-      {/* Particle Background */}
-      <canvas ref={canvasRef} className="absolute inset-0 z-0" />
-      {/*Header section*/}
-      {/* Hero Content */}
-      <div className="container mx-auto px-4 z-10 pt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <div className="text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              <span className={metalMania.className}>Dominate The </span>
-              <span className={`${metalMania.className} text-[#a903fc]`}>Game</span>
-            </h1>
-            <p className={metalMania.className}>
-              Join us on our journey to the top of competitive gaming. We are a professional esports organization
-              competing at the highest level.
-            </p>
+    <div className="relative h-screen w-full overflow-hidden">
+      {/* Carousel Background */}
+      <div className="absolute inset-0 z-0">
+        {carouselImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              currentSlide === index ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <div 
+              className="w-full h-full bg-cover bg-center"
+              style={{ 
+                backgroundImage: `url(${image})`,
+                filter: 'brightness(0.3)'
+              }}
+            />
           </div>
-          <div className="relative h-[300px] md:h-[400px] lg:h-[500px] w-full">
-            {/* <Image src="/placeholder.svg?height=500&width=500" alt="Gaming Team" fill className="object-contain" /> */}
-
-            {/* Decorative Elements */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#a903fc]/20 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-[#a903fc]/10 rounded-full blur-3xl"></div>
-          </div>
-        </div>
+        ))}
+        
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10"></div>
       </div>
+
+      {/* Purple accent lights */}
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-800/30 rounded-full filter blur-3xl z-10"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-800/20 rounded-full filter blur-3xl z-10"></div>
+      
+      
+      {/* Slide indicators */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center space-x-3 z-30">
+        {carouselImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`h-2 transition-all duration-300 rounded-full ${
+              currentSlide === index 
+                ? "w-8 bg-purple-500" 
+                : "w-2 bg-gray-400 hover:bg-gray-300"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Additional decorative elements */}
+      <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black to-transparent z-20"></div>
+
+      {/* You can place your Header component here if needed */}
+      {/* <Header /> */}
     </div>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from 'next/image';
 import image from '../assests/aboutImage.png';
@@ -67,16 +67,16 @@ export default function ManagementTeam() {
     }, 300);
   };
 
-  const getProfile = (indexOffset: number) => {
+  const getProfile = (indexOffset:number) => {
     return profiles[(currentIndex + indexOffset + profiles.length) % profiles.length];
   };
 
   return (
-    <div className="relative flex items-center justify-center h-screen overflow-hidden px-4 sm:px-8 lg:px-20">
+    <div className="relative flex items-center justify-center h-screen overflow-hidden px-4 sm:px-8 lg:px-20 bg-black">
       {/* Left Button */}
       <button
         onClick={handlePrev}
-        className="absolute left-6 sm:left-8 text-[#a903fc] z-10 hover:scale-110 hover:cursor-pointer transition-transform duration-300"
+        className="absolute left-6 sm:left-8 text-purple-500 z-10 bg-black/50 rounded-full p-2 backdrop-blur-sm hover:scale-110 hover:bg-black/70 hover:text-purple-400 transition-all duration-300"
         disabled={isAnimating}
       >
         <ChevronLeft size={32} />
@@ -86,33 +86,35 @@ export default function ManagementTeam() {
       <div className="flex items-center justify-center space-x-6 sm:space-x-8 lg:space-x-10">
         {/* Left Profile */}
         <div
-          className={`hidden sm:block ${getProfile(-1) ? 'block' : 'hidden'}`}
+          className={`hidden sm:block ${getProfile(-1) ? 'block' : 'hidden'} transition-all duration-500`}
           style={{
             perspective: '1000px',
             transformStyle: 'preserve-3d',
-            transform: 'scale(0.8) rotateY(12deg)',
+            transform: 'scale(0.75) rotateY(15deg)',
           }}
         >
-          <div className="flex flex-col items-center justify-end p-4 rounded-lg opacity-70">
-            <div className="overflow-hidden rounded-lg shadow-lg">
-              <Image
-                src={getProfile(-1).image}
-                alt={getProfile(-1).name}
-                width={240}
-                height={300}
-                className="rounded-lg"
-              />
+          <div className="flex flex-col items-center justify-end p-4 rounded-xl opacity-70 shadow-xl bg-gradient-to-b from-purple-900/30 to-black/40 backdrop-blur-sm border border-purple-500/30 transition-all duration-300">
+            <div className="overflow-hidden rounded-xl shadow-2xl ring-2 ring-purple-500/40 p-1 bg-gradient-to-br from-purple-500/20 to-black">
+              <div className="overflow-hidden rounded-lg">
+                <Image
+                  src={getProfile(-1).image}
+                  alt={getProfile(-1).name}
+                  width={240}
+                  height={300}
+                  className="rounded-lg hover:scale-105 transition-transform duration-500"
+                />
+              </div>
             </div>
             <div className="mt-4 text-white text-center">
-              <h2 className="text-lg sm:text-xl font-bold">{getProfile(-1).name}</h2>
-              <p className="text-sm sm:text-base text-gray-300">{getProfile(-1).role}</p>
-              <div className="flex justify-center gap-2 mt-2">
+              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-purple-300 to-white bg-clip-text text-transparent">{getProfile(-1).name}</h2>
+              <p className="text-sm sm:text-base text-gray-300 mt-1">{getProfile(-1).role}</p>
+              <div className="flex justify-center gap-3 mt-3">
                 {getProfile(-1).socials.linkedin && (
                   <a
                     href={getProfile(-1).socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg sm:text-xl md:text-2xl text-[#a903fc] hover:scale-110 transition-transform"
+                    className="text-lg sm:text-xl bg-purple-800/50 hover:bg-purple-700 p-2 rounded-full hover:scale-110 transition-transform duration-300"
                   >
                     <FaLinkedin />
                   </a>
@@ -122,7 +124,7 @@ export default function ManagementTeam() {
                     href={getProfile(-1).socials.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg sm:text-xl md:text-2xl text-[#a903fc] hover:scale-110 transition-transform"
+                    className="text-lg sm:text-xl bg-purple-800/50 hover:bg-purple-700 p-2 rounded-full hover:scale-110 transition-transform duration-300"
                   >
                     <FaTwitter />
                   </a>
@@ -132,7 +134,7 @@ export default function ManagementTeam() {
                     href={getProfile(-1).socials.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg sm:text-xl md:text-2xl text-[#a903fc] hover:scale-110 transition-transform"
+                    className="text-lg sm:text-xl bg-purple-800/50 hover:bg-purple-700 p-2 rounded-full hover:scale-110 transition-transform duration-300"
                   >
                     <FaInstagram />
                   </a>
@@ -143,91 +145,94 @@ export default function ManagementTeam() {
         </div>
 
         {/* Center Profile */}
-      <div
-        key={getProfile(0).name}
-        style={{
-          perspective: '1000px',
-          transformStyle: 'preserve-3d',
-        }}
-        className="flex flex-col items-center justify-end p-4 rounded-lg z-10 transform sm:scale-125 md:scale-130 lg:scale-150 xl:scale-100 2xl:scale-100"
-      >
-        <div className="overflow-hidden rounded-lg shadow-lg">
-          <Image
-            src={getProfile(0).image}
-            alt={getProfile(0).name}
-            width={240}
-            height={300}
-            className="rounded-lg"
-          />
-        </div>
-        <div className="mt-4 text-white text-center">
-          <h2 className="text-lg sm:text-xl font-bold">{getProfile(0).name}</h2>
-          <p className="text-sm sm:text-base text-gray-300">{getProfile(0).role}</p>
-          <div className="flex justify-center gap-2 mt-2">
-            {getProfile(0).socials.linkedin && (
-              <a
-                href={getProfile(0).socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg sm:text-xl md:text-2xl text-[#a903fc] hover:scale-110 transition-transform"
-              >
-                <FaLinkedin />
-              </a>
-            )}
-            {getProfile(0).socials.twitter && (
-              <a
-                href={getProfile(0).socials.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg sm:text-xl md:text-2xl text-[#a903fc] hover:scale-110 transition-transform"
-              >
-                <FaTwitter />
-              </a>
-            )}
-            {getProfile(0).socials.instagram && (
-              <a
-                href={getProfile(0).socials.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg sm:text-xl md:text-2xl text-[#a903fc] hover:scale-110 transition-transform"
-              >
-                <FaInstagram />
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-
-
-        {/* Right Profile */}
         <div
-          className={`hidden sm:block ${getProfile(1) ? 'block' : 'hidden'}`}
+          key={getProfile(0).name}
           style={{
             perspective: '1000px',
             transformStyle: 'preserve-3d',
-            transform: 'scale(0.8) rotateY(-12deg)',
           }}
+          className="flex flex-col items-center justify-end p-6 rounded-xl z-10 transform sm:scale-105 md:scale-110 transition-all duration-500 shadow-2xl bg-gradient-to-b from-purple-800/40 to-black/70 backdrop-blur-md border border-purple-500/40"
         >
-          <div className="flex flex-col items-center justify-end p-4 rounded-lg opacity-70">
-            <div className="overflow-hidden rounded-lg shadow-lg">
+          <div className="overflow-hidden rounded-xl shadow-2xl ring-4 ring-purple-500/60 p-2 bg-gradient-to-br from-purple-500/30 to-black">
+            <div className="overflow-hidden rounded-lg">
               <Image
-                src={getProfile(1).image}
-                alt={getProfile(1).name}
-                width={240}
-                height={300}
-                className="rounded-lg"
+                src={getProfile(0).image}
+                alt={getProfile(0).name}
+                width={260}
+                height={320}
+                className="rounded-lg hover:scale-105 transition-transform duration-500"
               />
             </div>
+          </div>
+          <div className="mt-6 text-white text-center">
+            <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-300 to-purple-400 bg-clip-text text-transparent">{getProfile(0).name}</h2>
+            <p className="text-base sm:text-lg text-gray-200 mt-2">{getProfile(0).role}</p>
+            <div className="flex justify-center gap-4 mt-4">
+              {getProfile(0).socials.linkedin && (
+                <a
+                  href={getProfile(0).socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xl sm:text-2xl bg-purple-700/70 hover:bg-purple-600 p-3 rounded-full hover:scale-110 transition-all duration-300 shadow-lg shadow-purple-700/30"
+                >
+                  <FaLinkedin />
+                </a>
+              )}
+              {getProfile(0).socials.twitter && (
+                <a
+                  href={getProfile(0).socials.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xl sm:text-2xl bg-purple-700/70 hover:bg-purple-600 p-3 rounded-full hover:scale-110 transition-all duration-300 shadow-lg shadow-purple-700/30"
+                >
+                  <FaTwitter />
+                </a>
+              )}
+              {getProfile(0).socials.instagram && (
+                <a
+                  href={getProfile(0).socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xl sm:text-2xl bg-purple-700/70 hover:bg-purple-600 p-3 rounded-full hover:scale-110 transition-all duration-300 shadow-lg shadow-purple-700/30"
+                >
+                  <FaInstagram />
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Right Profile */}
+        <div
+          className={`hidden sm:block ${getProfile(1) ? 'block' : 'hidden'} transition-all duration-500`}
+          style={{
+            perspective: '1000px',
+            transformStyle: 'preserve-3d',
+            transform: 'scale(0.75) rotateY(-15deg)',
+          }}
+        >
+          <div className="flex flex-col items-center justify-end p-4 rounded-xl opacity-70 shadow-xl bg-gradient-to-b from-purple-900/30 to-black/40 backdrop-blur-sm border border-purple-500/30 transition-all duration-300">
+            <div className="overflow-hidden rounded-xl shadow-2xl ring-2 ring-purple-500/40 p-1 bg-gradient-to-br from-purple-500/20 to-black">
+              <div className="overflow-hidden rounded-lg">
+                <Image
+                  src={getProfile(1).image}
+                  alt={getProfile(1).name}
+                  width={240}
+                  height={300}
+                  className="rounded-lg hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </div>
             <div className="mt-4 text-white text-center">
-              <h2 className="text-lg sm:text-xl font-bold">{getProfile(1).name}</h2>
-              <p className="text-sm sm:text-base text-gray-300">{getProfile(1).role}</p>
-              <div className="flex justify-center gap-2 mt-2">
+              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-purple-300 to-white bg-clip-text text-transparent">{getProfile(1).name}</h2>
+              <p className="text-sm sm:text-base text-gray-300 mt-1">{getProfile(1).role}</p>
+              <div className="flex justify-center gap-3 mt-3">
                 {getProfile(1).socials.linkedin && (
                   <a
                     href={getProfile(1).socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg sm:text-xl md:text-2xl text-[#a903fc] hover:scale-110 transition-transform"
+                    className="text-lg sm:text-xl bg-purple-800/50 hover:bg-purple-700 p-2 rounded-full hover:scale-110 transition-transform duration-300"
                   >
                     <FaLinkedin />
                   </a>
@@ -237,7 +242,7 @@ export default function ManagementTeam() {
                     href={getProfile(1).socials.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg sm:text-xl md:text-2xl text-[#a903fc] hover:scale-110 transition-transform"
+                    className="text-lg sm:text-xl bg-purple-800/50 hover:bg-purple-700 p-2 rounded-full hover:scale-110 transition-transform duration-300"
                   >
                     <FaTwitter />
                   </a>
@@ -247,7 +252,7 @@ export default function ManagementTeam() {
                     href={getProfile(1).socials.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg sm:text-xl md:text-2xl text-[#a903fc] hover:scale-110 transition-transform"
+                    className="text-lg sm:text-xl bg-purple-800/50 hover:bg-purple-700 p-2 rounded-full hover:scale-110 transition-transform duration-300"
                   >
                     <FaInstagram />
                   </a>
@@ -261,21 +266,34 @@ export default function ManagementTeam() {
       {/* Right Button */}
       <button
         onClick={handleNext}
-        className="absolute right-6 sm:right-8 text-[#a903fc] z-10 hover:scale-110 hover:cursor-pointer transition-transform duration-300"
+        className="absolute right-6 sm:right-8 text-purple-500 z-10 bg-black/50 rounded-full p-2 backdrop-blur-sm hover:scale-110 hover:bg-black/70 hover:text-purple-400 transition-all duration-300"
         disabled={isAnimating}
       >
         <ChevronRight size={32} />
       </button>
 
       {/* Indicators */}
-      <div className="absolute bottom-6 flex space-x-2">
+      <div className="absolute bottom-8 flex space-x-3">
         {profiles.map((_, idx) => (
           <div
             key={idx}
-            className={`h-2 w-2 rounded-full transition-colors duration-300
-              ${idx === currentIndex ? 'bg-white' : 'bg-gray-600'}`}
+            className={`h-2.5 w-2.5 rounded-full transition-all duration-300 cursor-pointer
+              ${idx === currentIndex ? 'bg-purple-500 scale-125' : 'bg-gray-600 hover:bg-gray-400'}`}
+            onClick={() => {
+              if (!isAnimating) {
+                setIsAnimating(true);
+                setCurrentIndex(idx);
+                setTimeout(() => setIsAnimating(false), 300);
+              }
+            }}
           />
         ))}
+      </div>
+      
+      {/* Background Effects */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-800/20 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-900/20 rounded-full filter blur-3xl"></div>
       </div>
     </div>
   );
