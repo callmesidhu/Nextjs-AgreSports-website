@@ -14,10 +14,11 @@ export default function Home() {
    
     <div className={`text-xl`}>  
        <HeroSection />
-       <Title mainTitle="our" subTitle="achievements"/>
-       <AchievementsPage/>
+
        <Title mainTitle="our" subTitle="journey"/>
        <TimelineWithAnimation/>
+       <Title mainTitle="our" subTitle="achievements"/>
+       <AchievementsPage/>
        <Title mainTitle="Latest" subTitle="Videos"/>
        <LatestVideos />
        {/* 

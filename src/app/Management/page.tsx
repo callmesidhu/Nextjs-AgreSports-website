@@ -43,7 +43,7 @@ export default function ManagementPage() {
     <section className="text-center max-w-3xl mx-auto mb-16 pb-20">
       <h2 className="text-4xl md:text-5xl font-bold mb-4">
         <span className="text-purple-500">MANAGEMENT</span>{' '}
-        <span>TEAM</span>
+        <span>TEAM__</span>
       </h2>
       <p className="text-gray-300 text-sm md:text-base leading-relaxed">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsum esse laboriosam libero. Id maxime ducimus illo, recusandae ullam quia. Molestias odio incidunt facilis voluptas beatae quas consequatur inventore cupiditate?

@@ -64,7 +64,7 @@ export default function Header() {
           {navLinks.map((item) => (
             <a
               key={item}
-              href={`#${item.toLowerCase()}`}
+              href={`/${item}`}
               className="text-white text-base transition duration-300 relative group"
               onClick={() => setIsOpen(false)}
             >
