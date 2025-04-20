@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "AgreSports",
     images: [
       {
-        url: "https://agresports.com/og-image.jpg",
+        url: "https://agresports.com/logo.png",
         width: 1200,
         height: 630,
         alt: "AgreSports - Your Ultimate Sports Hub",
@@ -47,11 +47,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AgreSports - Your Ultimate Sports Hub",
     description: "Stay updated with the latest sports news, videos, and events. AgreSports is your one-stop destination for all things sports.",
-    images: ["https://agresports.com/twitter-image.jpg"],
+    images: ["https://agresports.com/logo.png"],
   },
   icons: {
     icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    apple: "/favicon.ico",
   },
 };
 export default function RootLayout({
