@@ -22,7 +22,7 @@ const achievements: Achievement[] = [
   {
     title: "Champions - Valorant Tournament",
     description: "AGR Esports secured 1st place in the MEC LAN 2024 event, competing against 16 professional teams.",
-    icon: <Trophy className="w-6 h-6 text-amber-400" />,
+    icon: <Trophy className="w-6 h-6 text-gray-300" />,
     date: "December 2024",
     type: "victory",
   },
@@ -36,14 +36,14 @@ const achievements: Achievement[] = [
   {
     title: "MVP Recognition",
     description: "Team member Xeno received MVP recognition in three consecutive tournaments for exceptional performance.",
-    icon: <Star className="w-6 h-6 text-amber-400" />,
+    icon: <Star className="w-6 h-6 text-gray-300" />,
     date: "September 2024",
     type: "milestone",
   },
   {
     title: "Best Team Coordination",
     description: "Recognition received at Thudi '24 for exemplary team synergy and strategic excellence.",
-    icon: <Shield className="w-6 h-6 text-amber-700" />,
+    icon: <Shield className="w-6 h-6 text-gray-300" />,
     date: "August 2024",
     type: "award",
   },
@@ -118,11 +118,11 @@ export default function AchievementsPage() {
                   <span
                     className={`text-xs font-medium px-3 py-1 rounded-full capitalize ${
                       item.type === "victory"
-                        ? "bg-amber-900 bg-opacity-20 text-amber-400"
+                        ? "bg-gray-700 bg-opacity-20 text-gray-300"
                         : ""
-                    } ${item.type === "award" ? "bg-gray-700 bg-opacity-40 text-gray-300" : ""} ${
+                    } ${item.type === "award" ? "bg-gray-700 bg-opacity-20 text-gray-300" : ""} ${
                       item.type === "milestone"
-                        ? "bg-amber-800 bg-opacity-20 text-amber-600"
+                        ? "bg-gray-700 bg-opacity-20 text-gray-300"
                         : ""
                     }`}
                   >

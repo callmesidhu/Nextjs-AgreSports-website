@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "./components/ui/resizable-navbar";
 import Header from "./Header/header";
 import Footer from "./Footer/footer";
+import { poppins } from "./fonts/poppins";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} `}>
-      <body className="font-sans">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${poppins.className}`}>
         <Header />
         {children}
         <Footer />
