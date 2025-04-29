@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from "react";
-import { metalMania } from "../fonts/poppins";
 import { Menu, X } from "lucide-react";
 import Image from 'next/image';
 import image from '../assests/agrLogoNew2.jpg.png';
