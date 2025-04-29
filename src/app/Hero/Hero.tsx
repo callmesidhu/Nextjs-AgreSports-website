@@ -22,6 +22,12 @@ export default function HeroSection() {
   const [scrollEnabled, setScrollEnabled] = useState<boolean>(false);
   const [lastScrollTime, setLastScrollTime] = useState<number>(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  
+  // Cursor glow effect states
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMoving, setIsMoving] = useState(false);
+  const mouseTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
 
   const slideCount = carouselTitles.length;
 
@@ -77,8 +83,6 @@ export default function HeroSection() {
       }, 300);
     };
     
-    
-
     window.addEventListener("wheel", handleWheel, { passive: false });
 
     return () => {
@@ -132,8 +136,6 @@ export default function HeroSection() {
       }
     };
     
-    
-
     window.addEventListener("touchstart", handleTouchStart);
     window.addEventListener("touchmove", handleTouchMove, { passive: false });
 
@@ -143,11 +145,62 @@ export default function HeroSection() {
     };
   }, [scrollEnabled, lastScrollTime, currentSlide]);
 
+  // Cursor glow effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // Update mouse position
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      
+      // Set moving state to true
+      setIsMoving(true);
+      
+      // Clear any existing timeout
+      if (mouseTimerRef.current) {
+        clearTimeout(mouseTimerRef.current);
+      }
+      
+      // Set a timeout to hide the glow when mouse stops moving
+      mouseTimerRef.current = setTimeout(() => {
+        setIsMoving(false);
+      }, 1000);
+    };
+    
+    window.addEventListener("mousemove", handleMouseMove);
+    
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (mouseTimerRef.current) {
+        clearTimeout(mouseTimerRef.current);
+      }
+    };
+  }, []);
+  
+  // Update glow element position and opacity
+  useEffect(() => {
+    if (glowRef.current) {
+      glowRef.current.style.left = `${mousePosition.x}px`;
+      glowRef.current.style.top = `${mousePosition.y}px`;
+    }
+  }, [mousePosition]);
+
   return (
     <div 
       ref={scrollRef}
       className={`relative h-screen w-full ${scrollEnabled ? 'overflow-auto' : 'overflow-hidden'} bg-black`}
     >
+      {/* Cursor Glow Effect */}
+      <div 
+        ref={glowRef}
+        className={`fixed w-24 h-24 rounded-full bg-purple-700 filter blur-3xl pointer-events-none z-30 transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-700 ease-in-out ${
+          isMoving ? 'opacity-120' : 'opacity-0'
+        }`}
+        style={{
+          left: mousePosition.x,
+          top: mousePosition.y,
+          transition: 'opacity 0.7s ease-in-out, left 0.3s ease-out, top 0.3s ease-out',
+        }}
+      ></div>
+
       {/* Background and Lights */}
       <div className="absolute inset-0 z-0 bg-black">
         <div
@@ -193,8 +246,8 @@ export default function HeroSection() {
 
           <div className="flex justify-center">
             <button 
-              className="px-8 py-3 bg-purple-700 hover:bg-purple-600 text-white font-medium rounded-full 
-              transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30"
+              className="px-8 py-3 bg-purple-700 text-white rounded-full 
+              transition-all duration-500 transform hover:bg-[#8702c9] hover:shadow-[0_0_20px_#a903fc] font-bold"
             >
               Connect Now
             </button>
