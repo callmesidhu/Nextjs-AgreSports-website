@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -22,6 +22,7 @@
     "lucide-react": "^0.488.0",
     "motion": "^12.6.5",
     "next": "15.3.0",
+    "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.55.0",

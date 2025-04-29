@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /admin
+Disallow: /api
+
+# Host
+Host: https://agresports.org
+
+# Sitemaps
+Sitemap: https://agresports.org/sitemap.xml
