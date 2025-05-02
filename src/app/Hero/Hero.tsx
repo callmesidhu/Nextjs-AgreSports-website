@@ -5,15 +5,15 @@ import { poppins } from "../fonts/poppins";
 import Header from "../Header/header";
 
 const carouselTitles: string[] = [
-  "Digital Revolution",
-  "Future Technology",
-  "Creative Innovation",
+  "Alpha Gaming Regiment",
+  "Online Tournaments",
+  "LAN Events & Community",
 ];
 
 const carouselSubtitles: string[] = [
-  "Transform your business with cutting-edge solutions",
-  "Embrace the power of next-generation technology",
-  "Unlock your potential with innovative strategies",
+  "A dedicated esports org creating opportunities for emerging talent.",
+  "High-stakes online tournaments where players showcase their skills.",
+  "Building a vibrant esports community with memorable LAN experiences.",
 ];
 
 export default function HeroSection() {
