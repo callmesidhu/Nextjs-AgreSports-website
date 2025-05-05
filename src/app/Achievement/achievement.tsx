@@ -20,38 +20,120 @@ type Achievement = {
  */
 const achievements: Achievement[] = [
   {
-    title: "Champions - Valorant Tournament",
-    description: "AGR Esports secured 1st place in the MEC LAN 2024 event, competing against 16 professional teams.",
-    icon: <Trophy className="w-6 h-6 text-gray-300" />,
-    date: "December 2024",
-    type: "victory",
-  },
-  {
-    title: "Top 4 - National PUBG Showdown",
-    description: "Advanced to semi-finals in a national-level battlegrounds competition with participation from over 200 teams.",
-    icon: <Medal className="w-6 h-6 text-gray-300" />,
-    date: "October 2024",
-    type: "award",
-  },
-  {
-    title: "MVP Recognition",
-    description: "Team member Xeno received MVP recognition in three consecutive tournaments for exceptional performance.",
-    icon: <Star className="w-6 h-6 text-gray-300" />,
-    date: "September 2024",
+    title: "Foundation of AGR",
+    description:
+      "Alpha Gaming Regiment was founded in July 2022 with a mission to create a competitive esports organization focused on skill, discipline, and community.",
+    icon: <Sparkles className="w-6 h-6 text-gray-300" />,  
+    date: "July 2022",
     type: "milestone",
   },
   {
-    title: "Best Team Coordination",
-    description: "Recognition received at Thudi '24 for exemplary team synergy and strategic excellence.",
+    title: "Local Tournaments & Scrims",
+    description:
+      "Participated in local tournaments and community scrims through early 2023 to build team synergy and tactical foundations.",
     icon: <Shield className="w-6 h-6 text-gray-300" />,
-    date: "August 2024",
+    date: "2022–Early 2023",
+    type: "milestone",
+  },
+  {
+    title: "Balista Cup Champions",
+    description: "Won the Balista Cup 2023, marking AGR’s first major competitive triumph.",
+    icon: <Trophy className="w-6 h-6 text-gray-300" />,
+    date: "2023",
+    type: "victory",
+  },
+  {
+    title: "Prayan VKE Champions",
+    description: "Secured the championship title at Prayan VKE 2023 with outstanding performance.",
+    icon: <Trophy className="w-6 h-6 text-gray-300" />,
+    date: "2023",
+    type: "victory",
+  },
+  {
+    title: "KCM TDM Champions",
+    description: "Triumphed at KCM TDM 2023, showcasing disciplined gameplay.",
+    icon: <Trophy className="w-6 h-6 text-gray-300" />,
+    date: "2023",
+    type: "victory",
+  },
+  {
+    title: "Runner-Up at Diffuse Tournament",
+    description: "Achieved Runner-Up position at Diffuse Tournament 2024, earning regional recognition.",
+    icon: <Medal className="w-6 h-6 text-gray-300" />,
+    date: "February 2024",
     type: "award",
+  },
+  {
+    title: "EUPHOORIA RESPAWN Runner-Up",
+    description: "Finished as Runner-Up at EUPHOORIA RESPAWN 2024 for exceptional team coordination.",
+    icon: <Medal className="w-6 h-6 text-gray-300" />,
+    date: "March 2024",
+    type: "award",
+  },
+  {
+    title: "ASCENSION Champions",
+    description: "Clinched the ASCENSION 2024 title, demonstrating strategic excellence.",
+    icon: <Trophy className="w-6 h-6 text-gray-300" />,
+    date: "April 2024",
+    type: "victory",
+  },
+  {
+    title: "Expansion to Two Lineups",
+    description: "Expanded into two competitive lineups by late 2024, increasing depth and participation.",
+    icon: <Sparkles className="w-6 h-6 text-gray-300" />,
+    date: "Late 2024",
+    type: "milestone",
+  },
+  {
+    title: "RAGAN'25 Champions",
+    description: "Dominated the RAGAN'25 tournament in 2025, solidifying AGR’s state-wide leadership.",
+    icon: <Trophy className="w-6 h-6 text-gray-300" />,
+    date: "2025",
+    type: "victory",
+  },
+  {
+    title: "VALORENA Champions",
+    description: "Secured first place at VALORENA 2025, reinforcing our competitive momentum.",
+    icon: <Trophy className="w-6 h-6 text-gray-300" />,
+    date: "2025",
+    type: "victory",
+  },
+  {
+    title: "AROHA Champions",
+    description: "Achieved victory at AROHA 2025 with exceptional team coordination.",
+    icon: <Trophy className="w-6 h-6 text-gray-300" />,
+    date: "2025",
+    type: "victory",
+  },
+  {
+    title: "ELYSIUM Champions",
+    description:
+      "Triumphed at ELYSIUM 2025, showcasing our relentless drive and skill.",
+    icon: <Trophy className="w-6 h-6 text-gray-300" />,
+    date: "2025",
+    type: "victory",
+  },
+  {
+    title: "MASTERS LMCST Champions",
+    description:
+      "Secured the championship at MASTERS LMCST 2025, marking another milestone.",
+    icon: <Trophy className="w-6 h-6 text-gray-300" />,
+    date: "2025",
+    type: "victory",
+  },
+  {
+    title: "VELORIA 25 Champions",
+    description:
+      "Claimed the top spot at VELORIA 25, completing a dominant 2025 season.",
+    icon: <Trophy className="w-6 h-6 text-gray-300" />,
+    date: "2025",
+    type: "victory",
   },
 ];
 
 /**
  * AchievementsPage Component
- * Displays organizational achievements in a professional timeline format
+ * Displays organizational achievements in an elegant timeline format
  */
 export default function AchievementsPage() {
   return (
@@ -83,7 +165,7 @@ export default function AchievementsPage() {
       {/* Timeline container */}
       <div className="max-w-4xl mx-auto relative">
         <div className="relative border-l-2 border-purple-800 ml-8 md:ml-16 pl-12 space-y-16">
-          {achievements.map((item, idx) => (
+          {achievements.slice().reverse().map((item, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: -50 }}
@@ -103,28 +185,24 @@ export default function AchievementsPage() {
               </div>
 
               {/* Achievement card */}
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800 rounded-lg p-6 md:p-8 shadow-lg transition-all duration-300 hover:shadow-lg hover:border-purple-900 group w-full">
+              <div className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800 rounded-lg p-6 md:p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-purple-900 group w-full">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 rounded-full bg-gray-800 group-hover:bg-gray-700 transition-colors">
                     {item.icon}
                   </div>
-                  <h3 className="text-xl md:text-2xl font-semibold text-white">{item.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-semibold text-white">
+                    {item.title}
+                  </h3>
                 </div>
 
-                <p className="text-base text-gray-300 mb-4 leading-relaxed">{item.description}</p>
+                <p className="text-base text-gray-300 mb-4 leading-relaxed">
+                  {item.description}
+                </p>
 
                 {/* Achievement category badge */}
                 <div className="flex items-center gap-2">
                   <span
-                    className={`text-xs font-medium px-3 py-1 rounded-full capitalize ${
-                      item.type === "victory"
-                        ? "bg-gray-700 bg-opacity-20 text-gray-300"
-                        : ""
-                    } ${item.type === "award" ? "bg-gray-700 bg-opacity-20 text-gray-300" : ""} ${
-                      item.type === "milestone"
-                        ? "bg-gray-700 bg-opacity-20 text-gray-300"
-                        : ""
-                    }`}
+                    className={`text-xs font-medium px-3 py-1 rounded-full capitalize bg-gray-700 bg-opacity-20 text-gray-300`}
                   >
                     {item.type}
                   </span>

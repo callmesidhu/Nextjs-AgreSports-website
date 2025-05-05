@@ -21,21 +21,21 @@ import { Card, CardContent } from '@mui/material'
 
 const timelineData = [
   {
-    year: '2012',
-    title: 'lorem1',
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit.`,
+    year: 'July 2022',
+    title: 'The Beginning',
+    description: `Alpha Gaming Regiment (AGR) was founded in July 2022 with a mission to create a competitive esports organization focused on skill, discipline, and community. From humble beginnings, AGR was built on a shared passion for gaming and a desire to uplift the esports scene in Kerala and beyond.`,
     icon: <StarIcon />,
   },
   {
-    year: '2014',
-    title: 'lorem2',
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit.`,
+    year: 'Early 2023',
+    title: 'Laying the Foundation',
+    description: `AGR started its journey by participating in local tournaments, organizing community scrims, and building dedicated rosters for titles like Valorant and PUBG. The focus during this period was team synergy, tactical development, and consistent performance.`,
     icon: <EmojiEventsIcon />,
   },
   {
-    year: '2016',
-    title: 'lorem3',
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit.`,
+    year: 'Mid–Late 2023',
+    title: 'The Breakthrough Year',
+    description: `2023 marked AGR’s first major competitive success, with several tournament victories that solidified its position in Kerala’s rising esports scene.`,
     icon: <FlashOnIcon />,
   },
 ]
