@@ -38,60 +38,69 @@ export default function ManagementPage() {
     <>
       <Header />
       <main className="mt-20 relative bg-black min-h-screen text-white px-4 md:px-12 py-12 overflow-hidden">
-        {/* Animated Dots Background */}
+        {/* Gaming Neon Background */}
         <div
-          className="absolute inset-0 opacity-20 z-0 animate-[dotsMove_10s_linear_infinite]"
+          className="absolute inset-0 z-0 opacity-30 animate-[pulse_6s_ease-in-out_infinite]"
           style={{
-            backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
-            backgroundSize: '20px 20px',
+            background: 'radial-gradient(circle at center, rgba(128,0,128,0.4), transparent 60%)',
           }}
         />
 
         <div className="relative z-10">
-          <section className="text-center max-w-3xl mx-auto mb-16 pb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-purple-500">MANAGEMENT</span>{' '}
-              <span>TEAM__</span>
+          <section className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-5xl font-extrabold mb-4 tracking-wide">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+                MANAGEMENT
+              </span>{' '}
+              <span className="text-gray-300">TEAM</span>
             </h2>
-            <p className="text-gray-400 text-base leading-relaxed">
+            <p className="text-gray-400 text-lg leading-relaxed">
               Our leadership drives innovation, strategy, and growth. Meet the team behind our success.
             </p>
           </section>
 
-          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {teamMembers.map((member, idx) => (
               <motion.div
                 key={idx}
-                className="relative bg-neutral-900 rounded-2xl overflow-hidden shadow-xl"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 300 }}
+                className="group relative p-1 bg-gradient-to-br from-purple-600 via-pink-500 to-blue-500 rounded-2xl overflow-hidden shadow-2xl"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.2 }}
               >
-                {/* Circular Photo */}
-                <div className="w-full flex justify-center mt-6">
-                  <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-purple-500">
-                    <Image
-                      src={member.imgSrc}
-                      alt={member.name}
-                      width={128}
-                      height={128}
-                      className="object-cover"
-                    />
+                <div className="relative bg-neutral-900 rounded-xl overflow-hidden h-full transform transition-transform duration-500 group-hover:scale-105">
+                  {/* Neon Border Glow */}
+                  <div className="absolute inset-0 border-2 border-transparent rounded-xl blur-xl opacity-0 group-hover:opacity-75 transition-opacity duration-300"
+                       style={{ background: 'linear-gradient(45deg, rgba(131,58,180,0.7), rgba(253,29,29,0.7), rgba(252,176,69,0.7))', WebkitMask: 'linear-gradient(#fff 0 0)' }}
+                  />
+
+                  <div className="w-full flex justify-center mt-6">
+                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-purple-500 shadow-lg animate-pulse">
+                      <Image
+                        src={member.imgSrc}
+                        alt={member.name}
+                        width={128}
+                        height={128}
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="p-6 text-center">
+                    <h4 className="text-2xl font-bold text-white mb-1">{member.name}</h4>
+                    <p className="text-sm text-gray-300 mb-2 uppercase tracking-wider">
+                      {member.role}
+                    </p>
+                    <motion.p
+                      className="text-gray-400 text-sm italic opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                    >
+                      “{member.quote}”
+                    </motion.p>
                   </div>
                 </div>
-
-                {/* Info Panel */}
-                <div className="p-6 text-center">
-                  <h4 className="text-xl font-semibold mb-1">{member.name}</h4>
-                  <p className="text-sm text-gray-300 mb-2 uppercase tracking-wide">{member.role}</p>
-                  <p className="text-gray-400 text-sm italic">“{member.quote}”</p>
-                </div>
-
-                {/* Gradient Overlay on Hover */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-0"
-                  whileHover={{ opacity: 0.5 }}
-                  transition={{ duration: 0.3 }}
-                />
               </motion.div>
             ))}
           </section>
