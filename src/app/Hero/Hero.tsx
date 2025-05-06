@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { poppins } from "../fonts/poppins";
-import Header from "../Header/header";
+import '../globals.css';
 
 
 const carouselTitles: string[] = [
@@ -175,8 +175,8 @@ export default function HeroSection() {
       {/* Center Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-20 px-4">
         <div className="text-center">
-          <h1 className={`${poppins.className} text-5xl md:text-7xl font-bold text-white mb-4`}>
-            <span className={`inline-block transition-all duration-700 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"}`}>
+          <h1 className={`${poppins.className} text-5xl md:text-7xl font-bold text-white mb-4 bebas-neue-regular`}>
+            <span className={`inline-block transition-all duration-700 bebas-neue-regular ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"}`}>
               {carouselTitles[currentSlide]}
             </span>
           </h1>
