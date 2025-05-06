@@ -166,7 +166,7 @@ export default function LatestVideos() {
               <button
                 onClick={loadLess}
                 aria-label="Previous videos"
-                className="p-2 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 transition transform hover:scale-105"
+                className="p-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 transition transform hover:scale-105"
               >
                 <HiChevronUp size={28} />
               </button>

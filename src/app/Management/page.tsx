@@ -49,7 +49,7 @@ export default function ManagementPage() {
         <div className="relative z-10">
           <section className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-5xl font-extrabold mb-4 tracking-wide">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+              <span className="text-[#610bc6]">
                 MANAGEMENT
               </span>{' '}
               <span className="text-gray-300">TEAM</span>
@@ -106,7 +106,7 @@ export default function ManagementPage() {
           </section>
         </div>
       </main>
-      <Footer />
+
     </>
   );
 }

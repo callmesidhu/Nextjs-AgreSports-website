@@ -28,7 +28,7 @@ export default function Header() {
               className="text-white text-lg font-medium tracking-wide relative group transition-all duration-300"
             >
               {item}
-              <span className="block h-[2px] w-0 group-hover:w-full bg-[#a903fc] transition-all duration-300 absolute bottom-0 left-0 rounded-full"></span>
+              <span className="block h-[2px] w-0 group-hover:w-full bg-[#610bc6] transition-all duration-300 absolute bottom-0 left-0 rounded-full"></span>
             </a>
           ))}
         </div>
@@ -36,7 +36,7 @@ export default function Header() {
         {/* "Join Now" Button */}
         <a
           href="#join"
-          className="hidden md:inline-block bg-[#a903fc] hover:bg-[#8702c9] text-white px-6 py-2 rounded-full text-sm font-semibold shadow-md hover:shadow-[0_0_20px_#a903fc] transition-all duration-300"
+          className="hidden md:inline-block bg-[#610bc6] hover:bg-[#8702c9] text-white px-6 py-2 rounded-full text-sm font-semibold shadow-md hover:shadow-[0_0_20px_#a903fc] transition-all duration-300"
         >
           Join Now
         </a>
