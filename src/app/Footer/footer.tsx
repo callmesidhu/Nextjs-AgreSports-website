@@ -2,7 +2,7 @@ import { FaFacebookF, FaYoutube, FaTwitter, FaInstagram, FaWordpress } from "rea
 
 export default function Footer() {
   return (
-    <footer className="bg-[#7C02E0] text-white px-6 py-12 border-t border-purple-700">
+    <footer className="bg-[#610bc6] text-white px-6 py-12  ">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between gap-10">
         {/* Contact Section */}
         <div>
@@ -35,7 +35,7 @@ export default function Footer() {
       </div>
 
       {/* Divider and Copyright */}
-      <div className="mt-10 border-t border-purple-700 pt-6 text-center text-sm text-gray-300">
+      <div className="mt-10 pt-6 text-center text-sm text-gray-300">
         &copy; {new Date().getFullYear()} Your Organization. All rights reserved.
       </div>
     </footer>

@@ -49,7 +49,7 @@ export default function ManagementPage() {
         <div className="relative z-10">
           <section className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-5xl font-extrabold mb-4 tracking-wide">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+              <span className="text-[#610bc6]">
                 MANAGEMENT
               </span>{' '}
               <span className="text-gray-300">TEAM</span>
@@ -63,7 +63,7 @@ export default function ManagementPage() {
             {teamMembers.map((member, idx) => (
               <motion.div
                 key={idx}
-                className="group relative p-1 bg-gradient-to-br from-purple-600 via-pink-500 to-blue-500 rounded-2xl overflow-hidden shadow-2xl"
+                className="group relative p-1 bg-gradient-to-br from-purple-600 to-indigo-00 rounded-2xl overflow-hidden shadow-2xl"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -71,8 +71,8 @@ export default function ManagementPage() {
               >
                 <div className="relative bg-neutral-900 rounded-xl overflow-hidden h-full transform transition-transform duration-500 group-hover:scale-105">
                   {/* Neon Border Glow */}
-                  <div className="absolute inset-0 border-2 border-transparent rounded-xl blur-xl opacity-0 group-hover:opacity-75 transition-opacity duration-300"
-                       style={{ background: 'linear-gradient(45deg, rgba(131,58,180,0.7), rgba(253,29,29,0.7), rgba(252,176,69,0.7))', WebkitMask: 'linear-gradient(#fff 0 0)' }}
+                  <div className="absolute inset-0 border border-transparent rounded-xl blur-xl opacity-0 group-hover:opacity-75 transition-opacity duration-300"
+                       style={{ background: '', WebkitMask: 'linear-gradient(#fff 0 0)' }}
                   />
 
                   <div className="w-full flex justify-center mt-6">
@@ -93,9 +93,7 @@ export default function ManagementPage() {
                       {member.role}
                     </p>
                     <motion.p
-                      className="text-gray-400 text-sm italic opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
+                      className="text-gray-400 text-sm "
                     >
                       “{member.quote}”
                     </motion.p>
@@ -106,7 +104,7 @@ export default function ManagementPage() {
           </section>
         </div>
       </main>
-      <Footer />
+
     </>
   );
 }

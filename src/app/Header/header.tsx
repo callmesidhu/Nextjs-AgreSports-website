@@ -1,19 +1,34 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from 'next/image';
 import image from '../assests/agrLogoNew2.jpg.png';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
 
   const navLinks = ["Home", "Team", "Management", "About"];
 
+  useEffect(() => {
+    let lastScrollY = window.pageYOffset;
+    const handleScroll = () => {
+      const currentY = window.pageYOffset;
+      setShowHeader(currentY <= lastScrollY);
+      lastScrollY = currentY;
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md shadow-md">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md shadow-md transform transition-all duration-[800ms] ease-in-out ${
+        showHeader ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-100'
+      }`}
+    >
       <div className="flex items-center justify-between px-6 sm:px-10 md:px-16 lg:px-24 py-4">
-        
         {/* Logo */}
         <a href="/" className="flex items-center">
           <Image src={image} alt="AGR Logo" className="w-20 md:w-24" />
@@ -28,7 +43,7 @@ export default function Header() {
               className="text-white text-lg font-medium tracking-wide relative group transition-all duration-300"
             >
               {item}
-              <span className="block h-[2px] w-0 group-hover:w-full bg-[#a903fc] transition-all duration-300 absolute bottom-0 left-0 rounded-full"></span>
+              <span className="block h-[2px] w-0 group-hover:w-full bg-[#610bc6] transition-all duration-300 absolute bottom-0 left-0 rounded-full"></span>
             </a>
           ))}
         </div>
@@ -36,7 +51,7 @@ export default function Header() {
         {/* "Join Now" Button */}
         <a
           href="#join"
-          className="hidden md:inline-block bg-[#a903fc] hover:bg-[#8702c9] text-white px-6 py-2 rounded-full text-sm font-semibold shadow-md hover:shadow-[0_0_20px_#a903fc] transition-all duration-300"
+          className="hidden md:inline-block bg-[#610bc6] hover:bg-[#8702c9] text-white px-6 py-2 rounded-full text-sm font-semibold shadow-md hover:shadow-[0_0_20px_#a903fc] transition-all duration-300"
         >
           Join Now
         </a>

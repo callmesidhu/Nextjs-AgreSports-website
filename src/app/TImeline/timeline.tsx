@@ -96,15 +96,15 @@ export default function TimelineWithAnimation() {
                 <TimelineConnector
                   sx={{
                     height: '80px',
-                    backgroundColor: '#a903fc',
+                    backgroundColor: '#610bc6',
                     width: '3px',
                   }}
                 />
                 {/* Centering the icon in the dot */}
                 <TimelineDot
                   sx={{
-                    backgroundColor: '#a903fc',
-                    boxShadow: '0 0 10px #a903fc',
+                    backgroundColor: '#610bc6',
+                    boxShadow: '0 0 10px #610bc6',
                     width: '40px',
                     height: '40px',
                     zIndex: 1,
@@ -118,7 +118,7 @@ export default function TimelineWithAnimation() {
                 <TimelineConnector
                   sx={{
                     height: '80px',
-                    backgroundColor: '#a903fc',
+                    backgroundColor: '#610bc6',
                     width: '3px',
                   }}
                 />
@@ -145,7 +145,7 @@ export default function TimelineWithAnimation() {
         // Small Screen Card Layout
         <div className="flex flex-col gap-6 relative z-10">
           {/* Vertical line for mobile */}
-          <div className="absolute left-[16px] top-0 bottom-0 w-[2px] bg-[#a903fc] opacity-50" />
+          <div className="absolute left-[16px] top-0 bottom-0 w-[2px] bg-[#610bc6] opacity-50" />
 
           {timelineData.map((item, i) => (
             <motion.div

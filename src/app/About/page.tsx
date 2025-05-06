@@ -1,31 +1,64 @@
+'use client';
+
 import Image from 'next/image';
-import image from '../assests/aboutImage.png';
+import { motion } from 'framer-motion';
+import aboutImg from '../assests/aboutImage.png';
 
 export default function About() {
   return (
     <section
       id="about"
-      className="text-white px-6 sm:px-10 md:px-16 lg:px-28 pt-12 sm:pt-16 w-full h-screen flex justify-center items-center overflow-hidden"
+      className=" text-white py-20"
     >
-      <div className="flex flex-col md:flex-row items-center gap-10 max-w-7xl mx-auto">
-        {/* Left: Text Content */}
-        <div className="md:w-1/2 text-base sm:text-lg leading-relaxed text-gray-300">
-          <p className="mb-6">
-          Alpha Gaming Regiment (AGR) is a dedicated and forward-thinking esports organization committed to creating opportunities for emerging, skilled, and hardworking individuals to excel. We believe in cultivating raw talent and providing a platform for players to enhance their abilities and achieve new milestones in competitive gaming. We proudly host online tournaments, delivering dynamic, high-stakes events where players can demonstrate their expertise. As part of our long-term vision, AGR is also actively working towards organizing LAN events, aiming to unite players and fans through memorable in-person experiences. Furthermore, we are committed to fostering a strong, vibrant esports community poised for sustained growth and success.          </p>
-          <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-full transition duration-300">
-            Contact Us
-          </button>
-        </div>
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Section Heading */}
+        <motion.h2
+          className="text-5xl font-extrabold text-center mb-12 tracking-wide"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          ABOUT{' '}
+          <span className="text-[#610bc6]">
+            US
+          </span>
+        </motion.h2>
 
-        {/* Right: Image */}
-        <div className="md:w-1/2 w-full">
-          <Image
-            src={image}
-            alt="Team holding championship banner"
-            width={600}
-            height={400}
-            className="rounded-xl shadow-lg w-full h-auto object-cover"
-          />
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          
+          {/* Text Block */}
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <p className="text-lg text-gray-300 leading-relaxed">
+              Alpha Gaming Regiment (AGR) is a forward-thinking esports organization that nurtures raw talent and empowers hardworking individuals. We run dynamic online tournaments to showcase emerging stars, and are gearing up for in-person LAN events to bring the community together. Our mission is to build a vibrant, long-lasting esports ecosystem where every player has a chance to shine.
+            </p>
+            <button className="inline-block bg-[#610bc6] text-gray-100 font-semibold px-8 py-3 rounded-full uppercase tracking-wide hover:bg-purple-500 transition">
+              Contact Us
+            </button>
+          </motion.div>
+
+          {/* Image Card */}
+          <motion.div
+            className="flex justify-center"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="rounded-2xl overflow-hidden shadow-2xl w-full max-w-md">
+              <Image
+                src={aboutImg}
+                alt="Team holding championship banner"
+                width={600}
+                height={400}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
