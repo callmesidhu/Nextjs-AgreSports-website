@@ -1,19 +1,34 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from 'next/image';
 import image from '../assests/agrLogoNew2.jpg.png';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
 
   const navLinks = ["Home", "Team", "Management", "About"];
 
+  useEffect(() => {
+    let lastScrollY = window.pageYOffset;
+    const handleScroll = () => {
+      const currentY = window.pageYOffset;
+      setShowHeader(currentY <= lastScrollY);
+      lastScrollY = currentY;
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md shadow-md">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md shadow-md transform transition-all duration-[800ms] ease-in-out ${
+        showHeader ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-100'
+      }`}
+    >
       <div className="flex items-center justify-between px-6 sm:px-10 md:px-16 lg:px-24 py-4">
-        
         {/* Logo */}
         <a href="/" className="flex items-center">
           <Image src={image} alt="AGR Logo" className="w-20 md:w-24" />
