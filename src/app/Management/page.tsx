@@ -1,78 +1,112 @@
 'use client';
+
 import Image from 'next/image';
-import ManagementImage from '../assests/managementImage.png'
+import { motion } from 'framer-motion';
+import ManagementImage from '../assests/managementImage.png';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
+
 const teamMembers = [
   {
     name: 'ASHIN SHERIF',
     role: 'Owner',
-    imgSrc:ManagementImage,
+    imgSrc: ManagementImage,
+    quote: 'Leading with vision and passion.',
   },
   {
     name: 'Member Two',
     role: 'Manager',
-    imgSrc:ManagementImage,
+    imgSrc: ManagementImage,
+    quote: 'Organizing for excellence.',
   },
   {
     name: 'Member Three',
     role: 'Coach',
     imgSrc: ManagementImage,
+    quote: 'Building champions one step at a time.',
   },
   {
     name: 'Member Four',
     role: 'Analyst',
     imgSrc: ManagementImage,
+    quote: 'Turning data into strategy.',
   },
 ];
 
 export default function ManagementPage() {
   return (
     <>
-<main className="relative bg-black min-h-screen text-white px-4 md:px-12 py-12 pt-42 overflow-hidden">
-  {/* Animated Dots Background */}
-  <div
-        className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"
-        style={{
-          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
-          backgroundSize: '20px 20px',
-        }}
-      />
-  {/* Content above background */}
-  <div className="relative z-10">
-    <section className="text-center max-w-3xl mx-auto mb-16 pb-20">
-      <h2 className="text-4xl md:text-5xl font-bold mb-4">
-        <span className="text-purple-500">MANAGEMENT</span>{' '}
-        <span>TEAM__</span>
-      </h2>
-      <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsum esse laboriosam libero. Id maxime ducimus illo, recusandae ullam quia. Molestias odio incidunt facilis voluptas beatae quas consequatur inventore cupiditate?
-      </p>
-    </section>
-
-    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-10 place-items-center max-w-5xl mx-auto">
-      {teamMembers.map((member, index) => (
+      <Header />
+      <main className="mt-20 relative bg-black min-h-screen text-white px-4 md:px-12 py-12 overflow-hidden">
+        {/* Gaming Neon Background */}
         <div
-          key={index}
-          className="w-[280px] bg-neutral-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
-        >
-          <div className="relative w-full aspect-[4/5]">
-            <Image
-              src={member.imgSrc}
-              alt={member.name}
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="bg-purple-600 p-3 text-center">
-            <h4 className="font-bold text-white text-lg">{member.name}</h4>
-            <p className="text-sm text-gray-200">{member.role}</p>
-          </div>
+          className="absolute inset-0 z-0 opacity-30 animate-[pulse_6s_ease-in-out_infinite]"
+          style={{
+            background: 'radial-gradient(circle at center, rgba(128,0,128,0.4), transparent 60%)',
+          }}
+        />
+
+        <div className="relative z-10">
+          <section className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-5xl font-extrabold mb-4 tracking-wide">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+                MANAGEMENT
+              </span>{' '}
+              <span className="text-gray-300">TEAM</span>
+            </h2>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              Our leadership drives innovation, strategy, and growth. Meet the team behind our success.
+            </p>
+          </section>
+
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {teamMembers.map((member, idx) => (
+              <motion.div
+                key={idx}
+                className="group relative p-1 bg-gradient-to-br from-purple-600 via-pink-500 to-blue-500 rounded-2xl overflow-hidden shadow-2xl"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.2 }}
+              >
+                <div className="relative bg-neutral-900 rounded-xl overflow-hidden h-full transform transition-transform duration-500 group-hover:scale-105">
+                  {/* Neon Border Glow */}
+                  <div className="absolute inset-0 border-2 border-transparent rounded-xl blur-xl opacity-0 group-hover:opacity-75 transition-opacity duration-300"
+                       style={{ background: 'linear-gradient(45deg, rgba(131,58,180,0.7), rgba(253,29,29,0.7), rgba(252,176,69,0.7))', WebkitMask: 'linear-gradient(#fff 0 0)' }}
+                  />
+
+                  <div className="w-full flex justify-center mt-6">
+                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-purple-500 shadow-lg animate-pulse">
+                      <Image
+                        src={member.imgSrc}
+                        alt={member.name}
+                        width={128}
+                        height={128}
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="p-6 text-center">
+                    <h4 className="text-2xl font-bold text-white mb-1">{member.name}</h4>
+                    <p className="text-sm text-gray-300 mb-2 uppercase tracking-wider">
+                      {member.role}
+                    </p>
+                    <motion.p
+                      className="text-gray-400 text-sm italic opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                    >
+                      “{member.quote}”
+                    </motion.p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </section>
         </div>
-      ))}
-    </section>
-  </div>
-</main>
+      </main>
+      <Footer />
     </>
   );
 }

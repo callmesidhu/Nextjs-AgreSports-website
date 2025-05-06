@@ -11,12 +11,7 @@ export default function About() {
         {/* Left: Text Content */}
         <div className="md:w-1/2 text-base sm:text-lg leading-relaxed text-gray-300">
           <p className="mb-6">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid, dolorem. Ipsum quibusdam id aliquam unde aut, natus totam beatae ducimus, qui vero adipisci ea cum nihil sapiente quaerat, veritatis necessitatibus.
-          </p>
-          <p className="mb-6">
-            It has survived not only five centuries, but also the leap into electronic typesetting...
-          </p>
-
+          Alpha Gaming Regiment (AGR) is a dedicated and forward-thinking esports organization committed to creating opportunities for emerging, skilled, and hardworking individuals to excel. We believe in cultivating raw talent and providing a platform for players to enhance their abilities and achieve new milestones in competitive gaming. We proudly host online tournaments, delivering dynamic, high-stakes events where players can demonstrate their expertise. As part of our long-term vision, AGR is also actively working towards organizing LAN events, aiming to unite players and fans through memorable in-person experiences. Furthermore, we are committed to fostering a strong, vibrant esports community poised for sustained growth and success.          </p>
           <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-full transition duration-300">
             Contact Us
           </button>

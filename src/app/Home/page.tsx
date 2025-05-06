@@ -13,7 +13,7 @@ function HomeSection() {
        <TimelineWithAnimation/>
        <Title mainTitle="our" subTitle="achievements"/>
        <AchievementsPage/>
-       <Title mainTitle="Latest" subTitle="Videos"/>
+       <Title mainTitle="suggestion" subTitle="Videos"/>
        <LatestVideos />
     </>
   )
