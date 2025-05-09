@@ -6,6 +6,7 @@ import Image from 'next/image';
 import playercard from '../assests/playercard.jpg';
 import ValorantLogo from '../assests/valorantLogo.png';
 import Header from '../Header/header';
+import TeamHeader from '../Header/teamHeader';
 
 interface Player {
   name: string;
@@ -29,7 +30,7 @@ export default function Lineup() {
 
   return (
     <div className="relative min-h-screen text-white pt-32 overflow-hidden">
-
+      <TeamHeader/>
       {/* Dots Background */}
       <div
         className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"

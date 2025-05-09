@@ -16,11 +16,9 @@ type NavItem = {
 const navLinks: NavItem[] = [
   { label: "Home",       type: "route",  to: "/"          },
   { label: "Team",       type: "route",  to: "/Team"     },
-  { label: "Management", type: "scroll", to: "management" },
-  { label: "About",      type: "scroll",  to: "about"     },
 ];
 
-export default function Header() {
+export default function TeamHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
 
