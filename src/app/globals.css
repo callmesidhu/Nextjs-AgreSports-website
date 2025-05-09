@@ -87,3 +87,11 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Xiwix';
+  src: url('/fonts/Xiwix.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

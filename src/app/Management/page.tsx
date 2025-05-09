@@ -36,9 +36,8 @@ const teamMembers = [
 export default function ManagementPage() {
   return (
     <>
-      <Header />
-      <main className="mt-20 relative bg-black min-h-screen text-white px-4 md:px-12 py-12 overflow-hidden">
-        {/* Gaming Neon Background */}
+     
+      <main className="pt-20 relative bg-black min-h-screen text-white px-4 md:px-12 overflow-hidden" id='management'>
         <div
           className="absolute inset-0 z-0 opacity-30 animate-[pulse_6s_ease-in-out_infinite]"
           style={{
@@ -48,7 +47,7 @@ export default function ManagementPage() {
 
         <div className="relative z-10">
           <section className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-5xl font-extrabold mb-4 tracking-wide">
+            <h2 className="text-5xl font-extrabold mb-4">
               <span className="text-[#610bc6]">
                 MANAGEMENT
               </span>{' '}
