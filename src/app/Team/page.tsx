@@ -29,7 +29,6 @@ export default function Lineup() {
 
   return (
     <div className="relative min-h-screen text-white pt-32 overflow-hidden">
-      <Header />
 
       {/* Dots Background */}
       <div
