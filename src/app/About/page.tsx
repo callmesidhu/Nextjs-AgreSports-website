@@ -1,15 +1,27 @@
-'use client';
+// app/components/About.tsx
+"use client";
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import aboutImg from '../assests/aboutImage.png';
+import React, { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import aboutImg from "../assests/aboutImage.png";
+
+// Swiper imports
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import { FreeMode, Navigation, Thumbs, Autoplay } from "swiper/modules";
 
 export default function About() {
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+
+  // number of slides you have in public/about/
+  const slideCount = 7; // adjust if you have more or fewer images
+
   return (
-    <section
-      id="about"
-      className=" text-white py-20"
-    >
+    <section id="about" className="text-white py-20">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Heading */}
         <motion.h2
@@ -18,15 +30,11 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          ABOUT{' '}
-          <span className="text-[#610bc6]">
-            US
-          </span>
+          ABOUT <span className="text-[#610bc6]">US</span>
         </motion.h2>
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          
           {/* Text Block */}
           <motion.div
             className="space-y-6"
@@ -59,6 +67,59 @@ export default function About() {
               />
             </div>
           </motion.div>
+        </div>
+
+        {/* Swiper Carousel */}
+        <div className="mt-16">
+
+          {/* Main Carousel with Autoplay */}
+          <Swiper
+            style={{
+              "--swiper-navigation-color": "#fff",
+              "--swiper-pagination-color": "#fff",
+            } as React.CSSProperties}
+            loop={true}
+            spaceBetween={10}
+            navigation={true}
+            thumbs={{ swiper: thumbsSwiper }}
+            autoplay={{ delay: 700, disableOnInteraction: false }}
+            modules={[FreeMode, Navigation, Thumbs, Autoplay]}
+            className="mySwiper2"
+          >
+            {Array.from({ length: slideCount }, (_, i) => (
+              <SwiperSlide key={i}>
+                <img
+                  src={`/about/${i + 1}.jpeg`}
+                  alt={`Slide ${i + 1}`}
+                  className="w-full md:h-96 h-32 object-cover"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+                    <Swiper
+            onSwiper={setThumbsSwiper}
+            loop={true}
+            spaceBetween={10}
+            slidesPerView={4}
+            freeMode={true}
+            watchSlidesProgress={true}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="mySwiper mt-4 m-4"
+          >
+            {Array.from({ length: slideCount }, (_, i) => (
+              <SwiperSlide key={i}>
+                <img
+                  src={`/about/${i + 1}.jpeg`}
+                  alt={`Thumbnail ${i + 1}`}
+                  className="w-full h-auto object-cover"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Thumbnail Carousel */}
+          
         </div>
       </div>
     </section>
