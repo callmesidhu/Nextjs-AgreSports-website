@@ -85,7 +85,7 @@ export default function RootLayout({
         <meta property="og:type" content="website" />
       </head>
       <body className="font-sans">
-        <Header />
+    
         {children}
         <Footer />
       </body>
