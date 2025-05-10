@@ -34,7 +34,7 @@ export default function About() {
         </motion.h2>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-12 items-center">
           {/* Text Block */}
           <motion.div
             className="space-y-6"
@@ -51,7 +51,7 @@ export default function About() {
           </motion.div>
 
           {/* Image Card */}
-          <motion.div
+          {/* <motion.div
             className="flex justify-center"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -66,7 +66,7 @@ export default function About() {
                 className="object-cover w-full h-full"
               />
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Swiper Carousel */}
