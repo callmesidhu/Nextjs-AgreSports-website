@@ -111,3 +111,13 @@ body {
     0% 90%       /* near bottom-left */
   );
 }
+.team-angled {
+  clip-path: polygon(
+    0% 0%,       /* top-left */
+    80% 0%,      /* near top-right */
+    100% 10%,    /* angled top-right */
+    100% 100%,   /* bottom-right */
+    20% 100%,    /* angled bottom-left */
+    0% 100%       /* near bottom-left */
+  );
+}

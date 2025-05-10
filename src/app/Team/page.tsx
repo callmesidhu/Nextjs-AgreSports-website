@@ -2,12 +2,10 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import playercard from '../assests/playercard.jpg';
-import ValorantLogo from '../assests/valorantLogo.png';
 import TeamHeader from '../Header/teamHeader';
 
 interface Player {
@@ -29,7 +27,7 @@ export default function Lineup() {
       role: 'Duelist',
       age: 17,
       country: 'India',
-      bio: 'Due to his age, he is still unable to compete in VCT; however, anyone with a pair of eyes can see that his firepower and game knowledge rival those of veterans…'
+      bio: 'Due to his age, see that his firepower and game knowledge rival those of veterans…'
     },
     {
       fullName: 'ETHAN “NISMO” CARSON',
@@ -117,12 +115,18 @@ export default function Lineup() {
           </div>
         </div>
 
-        {/* ————— RIGHT PANEL: single, scaled card ————— */}
-        <div className="col-span-7 flex justify-center items-center">
-          <ProfileCard player={current} active />
+        {/* ————— RIGHT PANEL: all cards in a row ————— */}
+        <div className="col-span-7 flex justify-center items-start space-x-6 pt-12">
+          {players.map((plr, idx) => (
+            <ProfileCard
+              key={idx}
+              player={plr}
+              active={idx === page - 1}
+              onClick={() => setPage(idx + 1)}
+            />
+          ))}
         </div>
       </div>
-
     </div>
   );
 }
@@ -130,18 +134,19 @@ export default function Lineup() {
 function ProfileCard({
   player,
   active,
+  onClick,
 }: {
   player: Player;
-  active?: boolean;
+  active: boolean;
+  onClick: () => void;
 }) {
   return (
     <div
-      className={`w-64 cursor-pointer transform transition duration-300 ${
-        active ? 'scale-110' : 'scale-100'
-      }`}
-      style={{
-        clipPath: 'polygon(10px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 25%)',
-      }}
+      onClick={onClick}
+      className={`
+        team-angled w-64 cursor-pointer transform transition-transform duration-300
+        ${active ? 'scale-110' : 'scale-100'}
+      `}
     >
       <div className="bg-[#610bc6] text-white uppercase text-xs px-4 py-2">
         PROFILE // {player.name}
@@ -152,7 +157,7 @@ function ProfileCard({
           alt={player.name}
           width={300}
           height={380}
-          className="object-cover"
+          className="object-cover "
         />
       </div>
     </div>
