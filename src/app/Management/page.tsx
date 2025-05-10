@@ -11,7 +11,7 @@ const teamMembers = [
     name: 'ASHIN SHERIF',
     role: 'Owner',
     imgSrc: ManagementImage,
-    quote: 'Leading with vision and passion.',
+    quote: 'Leading with',
   },
   {
     name: 'Member Two',
@@ -23,13 +23,13 @@ const teamMembers = [
     name: 'Member Three',
     role: 'Coach',
     imgSrc: ManagementImage,
-    quote: 'Building champions one step at a time.',
+    quote: 'Building',
   },
   {
     name: 'Member Four',
     role: 'Analyst',
     imgSrc: ManagementImage,
-    quote: 'Turning data into strategy.',
+    quote: 'Turning data ',
   },
 ];
 
@@ -58,35 +58,35 @@ export default function ManagementPage() {
             </p>
           </section>
 
-          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto ">
             {teamMembers.map((member, idx) => (
               <motion.div
                 key={idx}
-                className="group relative p-1 bg-gradient-to-br from-purple-600 to-indigo-00 rounded-2xl overflow-hidden shadow-2xl"
+                className="group relative p-1 bg-gradient-to-b from-violet-600 via-violet-900 to-black overflow-hidden shadow-2xl card-angled"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.2 }}
+                transition={{ duration: 1, delay: idx * 0.4 }}
               >
-                <div className="relative bg-neutral-900 rounded-xl overflow-hidden h-full transform transition-transform duration-500 group-hover:scale-105">
+                <div className="relative bg-black overflow-hidden h-full transform transition-transform duration-500 group-hover:scale-105 card-angled ">
                   {/* Neon Border Glow */}
-                  <div className="absolute inset-0 border border-transparent rounded-xl blur-xl opacity-0 group-hover:opacity-75 transition-opacity duration-300"
+                  <div className="  absolute inset-0 border border-transparent rounded-xl blur-xl opacity-0 group-hover:opacity-75 transition-opacity duration-1000"
                        style={{ background: '', WebkitMask: 'linear-gradient(#fff 0 0)' }}
                   />
 
-                  <div className="w-full flex justify-center mt-6">
-                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-purple-500 shadow-lg animate-pulse">
+                  <div className="w-full flex justify-center ">
+                    <div className="w-full h-full overflow-hidden shadow-lg animate-pulse ">
                       <Image
                         src={member.imgSrc}
                         alt={member.name}
-                        width={128}
-                        height={128}
-                        className="object-cover"
+                        width={1000}
+                        height={1000}
+                        className="object-cover clip-slant card-angled "
                       />
                     </div>
                   </div>
 
-                  <div className="p-6 text-center">
+                  <div className="p-6 ">
                     <h4 className="text-2xl font-bold text-white mb-1">{member.name}</h4>
                     <p className="text-sm text-gray-300 mb-2 uppercase tracking-wider">
                       {member.role}

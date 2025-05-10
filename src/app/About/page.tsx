@@ -82,7 +82,7 @@ export default function About() {
             spaceBetween={10}
             navigation={true}
             thumbs={{ swiper: thumbsSwiper }}
-            autoplay={{ delay: 700, disableOnInteraction: false }}
+            autoplay={{ delay: 1500, disableOnInteraction: false }}
             modules={[FreeMode, Navigation, Thumbs, Autoplay]}
             className="mySwiper2"
           >
