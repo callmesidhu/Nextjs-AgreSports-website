@@ -86,7 +86,6 @@ export default function RootLayout({
         <meta property="og:type" content="website" />
       </head>
       <body className={`${poppins.className}`}>
-        <Header />
         {children}
         <Footer />
       </body>

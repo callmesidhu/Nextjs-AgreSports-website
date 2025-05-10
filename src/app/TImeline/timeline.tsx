@@ -18,6 +18,7 @@ import FlashOnIcon from '@mui/icons-material/FlashOn'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
 import { Card, CardContent } from '@mui/material'
+import { Shield, Sparkles } from 'lucide-react'
 
 const timelineData = [
   {
@@ -25,19 +26,45 @@ const timelineData = [
     title: 'The Beginning',
     description: `Alpha Gaming Regiment (AGR) was founded in July 2022 with a mission to create a competitive esports organization focused on skill, discipline, and community. From humble beginnings, AGR was built on a shared passion for gaming and a desire to uplift the esports scene in Kerala and beyond.`,
     icon: <StarIcon />,
-  },
-  {
+  },{
+    title: "Foundation of AGR",
+    description:
+      "Alpha Gaming Regiment was founded in July 2022 with a mission to create a competitive esports organization focused on skill, discipline, and community.",
+    icon: <Sparkles/>,
+    date: "July 2022",
+    type: "milestone",
+  }, {
+    title: "Local Tournaments & Scrims",
+    description:
+      "Participated in local tournaments and community scrims through early 2023 to build team synergy and tactical foundations.",
+    icon: <Shield />,
+    date: "2022–Early 2023",
+    type: "milestone",
+  },  {
     year: 'Early 2023',
     title: 'Laying the Foundation',
     description: `AGR started its journey by participating in local tournaments, organizing community scrims, and building dedicated rosters for titles like Valorant and PUBG. The focus during this period was team synergy, tactical development, and consistent performance.`,
     icon: <EmojiEventsIcon />,
-  },
-  {
+  }, {
     year: 'Mid–Late 2023',
     title: 'The Breakthrough Year',
     description: `2023 marked AGR’s first major competitive success, with several tournament victories that solidified its position in Kerala’s rising esports scene.`,
     icon: <FlashOnIcon />,
   },
+
+   {
+    title: "Expansion to Two Lineups",
+    description:
+      "Expanded into two competitive lineups by late 2024, increasing depth and participation.",
+    icon: <Sparkles />,
+    date: "Late 2024",
+    type: "milestone",
+  },
+  
+ 
+  
+
+ 
 ]
 
 const fadeInUp = {

@@ -19,22 +19,6 @@ type Achievement = {
  */
 const achievements: Achievement[] = [
   {
-    title: "Foundation of AGR",
-    description:
-      "Alpha Gaming Regiment was founded in July 2022 with a mission to create a competitive esports organization focused on skill, discipline, and community.",
-    icon: <Sparkles className="w-6 h-6 text-gray-300" />,
-    date: "July 2022",
-    type: "milestone",
-  },
-  {
-    title: "Local Tournaments & Scrims",
-    description:
-      "Participated in local tournaments and community scrims through early 2023 to build team synergy and tactical foundations.",
-    icon: <Shield className="w-6 h-6 text-gray-300" />,
-    date: "2022–Early 2023",
-    type: "milestone",
-  },
-  {
     title: "Balista Cup Champions",
     description: "Won the Balista Cup 2023, marking AGR’s first major competitive triumph.",
     icon: <Trophy className="w-6 h-6 text-gray-300" />,
@@ -75,14 +59,6 @@ const achievements: Achievement[] = [
     icon: <Trophy className="w-6 h-6 text-gray-300" />,
     date: "April 2024",
     type: "victory",
-  },
-  {
-    title: "Expansion to Two Lineups",
-    description:
-      "Expanded into two competitive lineups by late 2024, increasing depth and participation.",
-    icon: <Sparkles className="w-6 h-6 text-gray-300" />,
-    date: "Late 2024",
-    type: "milestone",
   },
   {
     title: "RAGAN'25 Champions",
