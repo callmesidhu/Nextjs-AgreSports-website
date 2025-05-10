@@ -165,7 +165,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 flex flex-col items-center justify-center z-20 px-4">
         <h1
           style={{ fontFamily: "'badrock', sans-serif", letterSpacing: '2px', fontWeight: 400 } }
-          className="text-6xl md:text-9xl font-bold text-white "
+          className="text-6xl md:text-9xl font-bold text-white uppercase"
         >
           <span
             className={`inline-block transition-all duration-700 ${
