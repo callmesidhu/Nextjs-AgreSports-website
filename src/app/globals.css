@@ -95,3 +95,9 @@ body {
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'badrock';
+  src: url('/fonts/badrock.otf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
