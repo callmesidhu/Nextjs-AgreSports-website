@@ -1,19 +1,16 @@
-// app/Lineup.tsx
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { ChevronLeft } from 'lucide-react';
-import TeamHeader from '../Header/teamHeader';
-import ProfileCard from '../components/Team/ProfileCard';
-import PaginationControls from '../components/Team/PaginationControls';
 import { Heading, list1, list2 } from '../components/Team/listData';
+import TeamHeader from '../Header/teamHeader';
+import LineupContent from '../components/Team/lineUpContent';
+import { ChevronLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function Lineup() {
-  const router = useRouter();
-
-  // Swap between list1 and list2 as needed
-  const players: Heading[] = list1; // or list2
+   const router = useRouter();
+  // Choose which list to use: list1 or list2
+  const players: Heading[] = list2; // swap to list1 as needed
 
   const [page, setPage] = useState(1);
   const current = players[page - 1];
@@ -33,50 +30,31 @@ export default function Lineup() {
           backgroundSize: '20px 20px',
         }}
       />
-
-      <div className="relative z-10 max-w-[1300px] mx-auto px-8 grid grid-cols-12 gap-8">
-        {/* LEFT PANEL */}
-        <div className="col-span-5 flex flex-col justify-between">
-          <button
-            onClick={() => router.back()}
-            className="flex items-center text-[#610bc6] mb-8 space-x-2 hover:opacity-80"
-          >
-            <ChevronLeft size={20} />
-            <span className="uppercase font-medium">Back</span>
-          </button>
-
-          <div className="space-y-6">
-            <div className="flex items-center space-x-2">
-              <span className="block w-1 h-6 bg-[#610bc6]" />
-              <span className="uppercase text-sm tracking-widest text-gray-400">
-                {current.fullName}
-              </span>
-            </div>
-            <h1 className="text-[4rem] font-black leading-tight text-[#610bc6]">
-              {current.name}
-            </h1>
-            <p className="text-gray-300 leading-relaxed">{current.bio}</p>
-          </div>
-
-          <PaginationControls
-            page={page}
-            total={players.length}
-            onPrev={prev}
-            onNext={next}
-          />
-        </div>
-
-        {/* RIGHT PANEL: cards for all items in the chosen list */}
-        <div className="col-span-7 flex justify-center items-start space-x-6 pt-12">
-          {players.map((item, idx) => (
-            <ProfileCard
-              key={idx}
-              player={item as any} // Heading matches Player shape
-              active={idx === page - 1}
-              onClick={() => setPage(idx + 1)}
-            />
-          ))}
-        </div>
+    <button
+          onClick={() => router.back()}
+          className="flex items-center text-[#610bc6] mb-8 space-x-2 hover:opacity-80 px-12"
+        >
+          <ChevronLeft size={20} />
+          <span className="uppercase font-medium">Back</span>
+        </button>
+      <div className="relative z-10 max-w-[1300px] mx-auto px-8 grid grid-cols-12 gap-8 pb-32">
+         
+        <LineupContent
+          current={current}
+          players={players}
+          page={page}
+          setPage={setPage}
+          prev={prev}
+          next={next}
+        />
+        <LineupContent
+          current={current}
+          players={players}
+          page={page}
+          setPage={setPage}
+          prev={prev}
+          next={next}
+        />
       </div>
     </div>
   );
