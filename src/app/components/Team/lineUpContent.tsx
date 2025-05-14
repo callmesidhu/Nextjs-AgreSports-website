@@ -18,7 +18,7 @@ export default function LineupContent({ current, players, page, setPage, prev, n
   return (
     <>
       {/* LEFT PANEL */}
-      <div className="col-span-5 flex flex-col justify-between mx-2">
+      <div className="col-span-5 flex flex-col justify-between ">
 
         <div className="space-y-6">
           <div className="flex items-center space-x-2">
