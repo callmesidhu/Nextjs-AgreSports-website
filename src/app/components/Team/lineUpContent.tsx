@@ -18,7 +18,7 @@ export default function LineupContent({ current, players, page, setPage, prev, n
   return (
     <>
       {/* LEFT PANEL */}
-      <div className="col-span-5 flex flex-col justify-between ">
+      <div className="lg:col-span-5 col-span-12 flex flex-col justify-between ">
 
         <div className="space-y-6">
           <div className="flex items-center space-x-2">
@@ -37,7 +37,7 @@ export default function LineupContent({ current, players, page, setPage, prev, n
       </div>
 
       {/* RIGHT PANEL: profile cards */}
-      <div className="col-span-7 flex justify-center items-start space-x-6 pt-12">
+      <div className="lg:col-span-7 col-span-12 flex justify-center items-start space-x-6 pt-12">
         {players.map((item, idx) => (
           <ProfileCard
             key={idx}
