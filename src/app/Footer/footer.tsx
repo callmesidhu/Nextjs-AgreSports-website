@@ -6,6 +6,8 @@ import {
   FaInstagram,
   FaWordpress,
   FaDiscord,
+  FaPhone,
+  FaPhoneAlt,
 } from "react-icons/fa";
 
 export default function Footer() {
@@ -16,12 +18,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 items-center justify-items-center">
         {/* Contact Icons */}
         <div className="flex flex-col gap-4">
-          <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
-          <a href="tel:1234567890" className="text-xl hover:scale-110 transition-transform duration-300 hover:text-purple-200">
-           Phone Number1: <u>123-456-7890</u>
-          </a>
-          <a href="tel:1234567890" className="text-xl hover:scale-110 transition-transform duration-300 hover:text-purple-200">
-            Phone Number1: <u>123-456-7890</u>
+          <h2 className="text-3xl font-bold text-center">Contact Us</h2>
+          <a href="tel:1234567890" className="text-xl hover:scale-110 transition-transform duration-300 flex flex-row hover:text-purple-200">
+           <FaPhoneAlt />  <u> 123-456-7890</u>
           </a>
         </div>
         <div className="relative w-32 h-20">
@@ -31,7 +30,7 @@ export default function Footer() {
               alt="Logo"
               width={300}
               height={150}
-              className="z-10 relative w-full shadow-lg"
+              className="z-10 relative w-full"
             />
 
         </div>
