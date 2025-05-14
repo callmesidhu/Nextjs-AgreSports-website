@@ -35,8 +35,6 @@ export default function Footer() {
 
         {/* Animated Glowing Circle */}
         <div className="relative w-32 h-20">
-          <div className="absolute inset-0 rounded-full bg-purple-400 blur-xl opacity-100 animate-ping"></div>
-          <div className="absolute inset-1 rounded-full bg-purple-500 blur-xl opacity-40 animate-pulse"></div>
 
             <Image
               src="/floor.png"

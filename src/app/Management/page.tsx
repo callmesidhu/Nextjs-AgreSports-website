@@ -75,7 +75,7 @@ export default function ManagementPage() {
                   />
 
                   <div className="w-full flex justify-center ">
-                    <div className="w-full h-full overflow-hidden shadow-lg animate-pulse ">
+                    <div className="w-full h-full overflow-hidden shadow-lg  ">
                       <Image
                         src={member.imgSrc}
                         alt={member.name}
