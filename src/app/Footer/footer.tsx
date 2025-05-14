@@ -5,6 +5,7 @@ import {
   FaTwitter,
   FaInstagram,
   FaWordpress,
+  FaDiscord,
 } from "react-icons/fa";
 
 export default function Footer() {
@@ -23,17 +24,6 @@ export default function Footer() {
             Phone Number1: <u>123-456-7890</u>
           </a>
         </div>
-
-        {/* Social Icons */}
-        <div className="flex gap-6 text-2xl sm:text-3xl justify-center">
-          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaFacebookF /></a>
-          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaYoutube /></a>
-          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaTwitter /></a>
-          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaInstagram /></a>
-          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaWordpress /></a>
-        </div>
-
-        {/* Animated Glowing Circle */}
         <div className="relative w-32 h-20">
 
             <Image
@@ -45,6 +35,18 @@ export default function Footer() {
             />
 
         </div>
+
+        {/* Social Icons */}
+        <div className="flex gap-6 text-2xl sm:text-3xl justify-center">
+          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaFacebookF /></a>
+          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaYoutube /></a>
+          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaTwitter /></a>
+          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaInstagram /></a>
+          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaDiscord /></a>
+        </div>
+
+        {/* Animated Glowing Circle */}
+        
       </div>
 
       <div className="mt-10 pt-6 text-center text-xs text-gray-300 border-t border-purple-300/50">

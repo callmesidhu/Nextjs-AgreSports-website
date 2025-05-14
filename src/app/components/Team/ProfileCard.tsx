@@ -1,0 +1,45 @@
+'use client';
+
+import Image from 'next/image';
+import playercard from '../../assests/playercard.jpg';
+
+export interface Player {
+  fullName: string;
+  name: string;
+  role: string;
+  age: number;
+  country: string;
+  bio: string;
+}
+
+interface ProfileCardProps {
+  player: Player;
+  active: boolean;
+  onClick: () => void;
+}
+
+export default function ProfileCard({ player, active, onClick }: ProfileCardProps) {
+  return (
+    <div
+      onClick={onClick}
+      className={`
+        team-angled w-64 cursor-pointer transform transition-transform duration-300
+        ${active ? 'scale-110' : 'scale-100'}
+      `}
+    >
+      <div className="bg-[#610bc6] text-white uppercase text-xs px-4 py-2">
+        PROFILE // {player.name}
+      </div>
+      <div className="border border-[#610bc6]">
+        <Image
+          src={playercard}
+          alt={player.name}
+          width={300}
+          height={380}
+          className="object-cover"
+        />
+      </div>
+    </div>
+  );
+}
+
