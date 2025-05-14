@@ -112,8 +112,8 @@ export default function Header() {
 
       {/* Mobile Nav */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out px-6 ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out px-6  ${
+          isOpen ? "max-h-96 opacity-100 pb-4 md:pb-0" : "max-h-0 opacity-0"
         }`}
       >
         <nav className="flex flex-col space-y-4 pb-6 pt-2">

@@ -45,9 +45,6 @@ export default function About() {
             <p className="text-lg text-gray-300 leading-relaxed">
               Alpha Gaming Regiment (AGR) is a forward-thinking esports organization that nurtures raw talent and empowers hardworking individuals. We run dynamic online tournaments to showcase emerging stars, and are gearing up for in-person LAN events to bring the community together. Our mission is to build a vibrant, long-lasting esports ecosystem where every player has a chance to shine.
             </p>
-            <button className="inline-block bg-[#610bc6] text-gray-100 font-semibold px-8 py-3 rounded-full uppercase tracking-wide hover:bg-purple-500 transition">
-              Contact Us
-            </button>
           </motion.div>
 
           {/* Image Card */}
