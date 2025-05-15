@@ -1,10 +1,7 @@
 'use client';
 
-import Image from 'next/image';
-import playercard from '../../assests/playercard.jpg';
-
 export interface Player {
-  fullName: string;
+  image_url: string;
   name: string;
   role: string;
   age: number;
@@ -31,8 +28,8 @@ export default function ProfileCard({ player, active, onClick }: ProfileCardProp
         PROFILE // {player.name}
       </div>
       <div className="border border-[#610bc6]">
-        <Image
-          src={playercard}
+        <img
+          src={player.image_url}
           alt={player.name}
           width={300}
           height={380}

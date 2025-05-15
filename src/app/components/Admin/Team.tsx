@@ -131,7 +131,7 @@ const Teams: React.FC = () => {
           ))}
           <button
             type="submit"
-            className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="mt-4 bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-700"
           >
             Add Member
           </button>
@@ -159,7 +159,7 @@ const Teams: React.FC = () => {
                   <h3 className="text-lg font-bold">{member.name}</h3>
                   <p className="text-sm text-gray-600">{member.role}</p>
                   <p className="text-sm">{member.description}</p>
-                  <div className="flex gap-2 mt-2 text-sm text-blue-600">
+                  <div className="flex gap-2 mt-2 text-sm text-blue-300">
                     {member.discord_url && (
                       <a href={member.discord_url} target="_blank" rel="noreferrer">
                         Discord
