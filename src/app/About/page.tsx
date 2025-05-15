@@ -9,14 +9,14 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-import { db } from "../lib/firebase"; // make sure path is correct
+import { db } from "../lib/firebase"; 
 import { collection, getDocs } from "firebase/firestore";
 
 export default function About() {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [imageUrls, setImageUrls] = useState<string[]>([]);
 
-  // Fetch Firestore images
+  
   useEffect(() => {
     const fetchImages = async () => {
       const snapshot = await getDocs(collection(db, "about"));
@@ -47,7 +47,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="text-lg text-gray-300 leading-relaxed">
-              Alpha Gaming Regiment (AGR) is a forward-thinking esports organization...
+              Alpha Gaming Regiment (AGR) is a forward-thinking esports organization that nurtures raw talent and empowers hardworking individuals. We run dynamic online tournaments to showcase emerging stars, and are gearing up for in-person LAN events to bring the community together. Our mission is to build a vibrant, long-lasting esports ecosystem where every player has a chance to shine.
             </p>
           </motion.div>
         </div>
