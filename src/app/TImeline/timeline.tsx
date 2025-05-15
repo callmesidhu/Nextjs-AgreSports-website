@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   Timeline,
@@ -19,53 +20,28 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
 import { Card, CardContent } from '@mui/material'
 import { Shield, Sparkles } from 'lucide-react'
+import { collection, getDocs, query, orderBy } from 'firebase/firestore'
+import { db } from '../lib/firebase' // adjust your path accordingly
+import { Timestamp } from 'firebase/firestore' // for type & conversion
 
-const timelineData = [
-  {
-    year: 'July 2022',
-    title: 'The Beginning',
-    description: `Alpha Gaming Regiment (AGR) was founded in July 2022 with a mission to create a competitive esports organization focused on skill, discipline, and community. From humble beginnings, AGR was built on a shared passion for gaming and a desire to uplift the esports scene in Kerala and beyond.`,
-    icon: <StarIcon />,
-  },{
-    title: "Foundation of AGR",
-    description:
-      "Alpha Gaming Regiment was founded in July 2022 with a mission to create a competitive esports organization focused on skill, discipline, and community.",
-    icon: <Sparkles/>,
-    date: "July 2022",
-    type: "milestone",
-  }, {
-    title: "Local Tournaments & Scrims",
-    description:
-      "Participated in local tournaments and community scrims through early 2023 to build team synergy and tactical foundations.",
-    icon: <Shield />,
-    date: "2022–Early 2023",
-    type: "milestone",
-  },  {
-    year: 'Early 2023',
-    title: 'Laying the Foundation',
-    description: `AGR started its journey by participating in local tournaments, organizing community scrims, and building dedicated rosters for titles like Valorant and PUBG. The focus during this period was team synergy, tactical development, and consistent performance.`,
-    icon: <EmojiEventsIcon />,
-  }, {
-    year: 'Mid–Late 2023',
-    title: 'The Breakthrough Year',
-    description: `2023 marked AGR’s first major competitive success, with several tournament victories that solidified its position in Kerala’s rising esports scene.`,
-    icon: <FlashOnIcon />,
-  },
+type IconType = 'star' | 'award' | 'flash' | 'shield' | 'sparkles'
 
-   {
-    title: "Expansion to Two Lineups",
-    description:
-      "Expanded into two competitive lineups by late 2024, increasing depth and participation.",
-    icon: <Sparkles />,
-    date: "Late 2024",
-    type: "milestone",
-  },
-  
- 
-  
+interface JourneyItem {
+  id: string
+  year?: string
+  title: string
+  date: string
+  description: string
+  iconType: IconType
+}
 
- 
-]
+const iconMap = {
+  star: <StarIcon sx={{ color: 'white' }} />,
+  award: <EmojiEventsIcon sx={{ color: 'white' }} />,
+  flash: <FlashOnIcon sx={{ color: 'white' }} />,
+  shield: <Shield color="white" />,
+  sparkles: <Sparkles color="white" />,
+}
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -83,6 +59,55 @@ const fadeInUp = {
 export default function TimelineWithAnimation() {
   const theme = useTheme()
   const isMobile = useMediaQuery('(max-width: 395px)')
+  const [timelineData, setTimelineData] = useState<JourneyItem[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const iconTypes: IconType[] = ['star', 'award', 'flash', 'shield', 'sparkles']
+
+    const fetchTimeline = async () => {
+      try {
+        // Order by createdAt descending to show newest first
+        const q = query(collection(db, 'journey'), orderBy('createdAt', 'desc'))
+        const snapshot = await getDocs(q)
+
+        const data: JourneyItem[] = snapshot.docs.map((doc) => {
+          const d = doc.data()
+          const createdAt: Timestamp | undefined = d.createdAt
+
+          const year = createdAt
+            ? new Date(createdAt.toMillis()).getFullYear().toString()
+            : d.year || ''
+
+          const randomIcon = iconTypes[Math.floor(Math.random() * iconTypes.length)]
+
+          return {
+            id: doc.id,
+            title: d.title || 'No Title',
+            description: d.description || 'No Description',
+            date: d.date,
+            iconType: randomIcon,
+          }
+        })
+
+        setTimelineData(data)
+      } catch (error) {
+        console.error('Error fetching journey data:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchTimeline()
+  }, [])
+
+  if (loading) {
+    return (
+      <section className="relative bg-black text-white py-20 px-4 sm:px-10 md:px-16 lg:px-28 overflow-hidden">
+        <p className="text-center text-gray-400">Loading journey...</p>
+      </section>
+    )
+  }
 
   return (
     <section className="relative bg-black text-white py-20 px-4 sm:px-10 md:px-16 lg:px-28 overflow-hidden">
@@ -109,7 +134,7 @@ export default function TimelineWithAnimation() {
       {!isMobile ? (
         <Timeline position="alternate" className="relative z-10" sx={{ padding: 0 }}>
           {timelineData.map((item, i) => (
-            <TimelineItem key={i}>
+            <TimelineItem key={item.id}>
               <TimelineOppositeContent
                 sx={{ m: 'auto 0' }}
                 align={i % 2 === 0 ? 'right' : 'left'}
@@ -127,7 +152,6 @@ export default function TimelineWithAnimation() {
                     width: '3px',
                   }}
                 />
-                {/* Centering the icon in the dot */}
                 <TimelineDot
                   sx={{
                     backgroundColor: '#610bc6',
@@ -140,7 +164,7 @@ export default function TimelineWithAnimation() {
                     alignItems: 'center',
                   }}
                 >
-                  {React.cloneElement(item.icon, { sx: { color: 'white' } })}
+                  {iconMap[item.iconType]}
                 </TimelineDot>
                 <TimelineConnector
                   sx={{
@@ -176,7 +200,7 @@ export default function TimelineWithAnimation() {
 
           {timelineData.map((item, i) => (
             <motion.div
-              key={i}
+              key={item.id}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -200,7 +224,7 @@ export default function TimelineWithAnimation() {
               >
                 <CardContent>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-[#a903fc]">{item.icon}</span>
+                    <span className="text-[#a903fc]">{iconMap[item.iconType]}</span>
                     <Typography variant="h6" sx={{ color: '#fff', fontWeight: 600 }}>
                       {item.title}
                     </Typography>
@@ -208,8 +232,11 @@ export default function TimelineWithAnimation() {
                   <Typography variant="body2" sx={{ color: '#bbb' }}>
                     {item.description}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#888', display: 'block', marginTop: '8px' }}>
-                    {item.year}
+                  <Typography
+                    variant="caption"
+                    sx={{ color: '#888', display: 'block', marginTop: '8px' }}
+                  >
+                    {item.date}
                   </Typography>
                 </CardContent>
               </Card>

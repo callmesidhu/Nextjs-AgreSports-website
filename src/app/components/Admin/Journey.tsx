@@ -9,6 +9,7 @@ import {
   doc,
   query,
   orderBy,
+  serverTimestamp,   // <-- Import serverTimestamp here
 } from "firebase/firestore";
 
 interface JourneyMilestone {
@@ -16,6 +17,7 @@ interface JourneyMilestone {
   title: string;
   description: string;
   date: string;
+  createdAt?: any;  // Timestamp type from Firestore, optional because it might be undefined initially
 }
 
 const Journey = () => {
@@ -27,7 +29,8 @@ const Journey = () => {
   const [date, setDate] = useState("");
 
   useEffect(() => {
-    const q = query(collection(db, "journey"), orderBy("date", "asc"));
+    // Query by createdAt timestamp ascending order
+    const q = query(collection(db, "journey"), orderBy("createdAt", "asc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const milestones: JourneyMilestone[] = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -52,6 +55,7 @@ const Journey = () => {
         title,
         description,
         date,
+        createdAt: serverTimestamp(),  // Add createdAt timestamp here
       });
       setTitle("");
       setDescription("");
@@ -104,7 +108,7 @@ const Journey = () => {
 
         <button
           type="submit"
-          className="bg-violet-600 hover:bg-viloet-700 text-white px-6 py-2 rounded-md font-semibold transition"
+          className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2 rounded-md font-semibold transition"
         >
           Add Milestone
         </button>
