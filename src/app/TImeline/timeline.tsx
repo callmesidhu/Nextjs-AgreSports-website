@@ -21,8 +21,8 @@ import { useTheme } from '@mui/material/styles'
 import { Card, CardContent } from '@mui/material'
 import { Shield, Sparkles } from 'lucide-react'
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
-import { db } from '../lib/firebase' // adjust your path accordingly
-import { Timestamp } from 'firebase/firestore' // for type & conversion
+import { db } from '../lib/firebase'
+import { Timestamp } from 'firebase/firestore'
 
 type IconType = 'star' | 'award' | 'flash' | 'shield' | 'sparkles'
 
@@ -67,7 +67,6 @@ export default function TimelineWithAnimation() {
 
     const fetchTimeline = async () => {
       try {
-        // Order by createdAt descending to show newest first
         const q = query(collection(db, 'journey'), orderBy('createdAt', 'desc'))
         const snapshot = await getDocs(q)
 
@@ -79,14 +78,25 @@ export default function TimelineWithAnimation() {
             ? new Date(createdAt.toMillis()).getFullYear().toString()
             : d.year || ''
 
+          const formattedDate = d.date
+            ? d.date
+            : createdAt
+            ? new Date(createdAt.toMillis()).toLocaleDateString(undefined, {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })
+            : 'No Date'
+
           const randomIcon = iconTypes[Math.floor(Math.random() * iconTypes.length)]
 
           return {
             id: doc.id,
             title: d.title || 'No Title',
             description: d.description || 'No Description',
-            date: d.date,
+            date: formattedDate,
             iconType: randomIcon,
+            year,
           }
         })
 
@@ -141,16 +151,14 @@ export default function TimelineWithAnimation() {
                 variant="body2"
                 color="gray"
               >
-                {item.year}
+                 <Typography variant="caption" sx={{ color: '#888' }}>
+                    {item.date}
+                  </Typography>
               </TimelineOppositeContent>
 
               <TimelineSeparator>
                 <TimelineConnector
-                  sx={{
-                    height: '80px',
-                    backgroundColor: '#610bc6',
-                    width: '3px',
-                  }}
+                  sx={{ height: '80px', backgroundColor: '#610bc6', width: '3px' }}
                 />
                 <TimelineDot
                   sx={{
@@ -167,11 +175,7 @@ export default function TimelineWithAnimation() {
                   {iconMap[item.iconType]}
                 </TimelineDot>
                 <TimelineConnector
-                  sx={{
-                    height: '80px',
-                    backgroundColor: '#610bc6',
-                    width: '3px',
-                  }}
+                  sx={{ height: '80px', backgroundColor: '#610bc6', width: '3px' }}
                 />
               </TimelineSeparator>
 
@@ -187,6 +191,7 @@ export default function TimelineWithAnimation() {
                     {item.title}
                   </Typography>
                   <Typography sx={{ color: '#aaa' }}>{item.description}</Typography>
+                 
                 </motion.div>
               </TimelineContent>
             </TimelineItem>
