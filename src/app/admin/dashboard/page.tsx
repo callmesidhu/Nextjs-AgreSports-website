@@ -58,8 +58,8 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8 flex">
-      <aside className="w-64 bg-violet-900 p-6 rounded-lg shadow-lg">
+    <div className="min-h-screen bg-gray-900 text-white p-6 flex">
+      <aside className="w-64 bg-violet-900 p-6 rounded-lg shadow-lg h-screen">
         <Image
                     src="/floor.png"
                     alt="Logo"
