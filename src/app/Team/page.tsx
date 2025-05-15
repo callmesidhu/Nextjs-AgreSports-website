@@ -1,29 +1,59 @@
-// app/Lineup.tsx
 'use client';
 
-import { useState } from 'react';
-import { Heading, list1, list2 } from '../components/Team/listData';
-import TeamHeader from '../Header/teamHeader';
-import LineupContent from '../components/Team/lineUpContent';
+import { useEffect, useState } from 'react';
+import {
+  collection,
+  onSnapshot,
+  query,
+  orderBy,
+  DocumentData,
+} from 'firebase/firestore';
+import { db } from '../lib/firebase';
 import { ChevronLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+
+import TeamHeader from '../Header/teamHeader';
+import LineupContent from '../components/Team/lineUpContent';
 
 export default function Lineup() {
   const router = useRouter();
 
-  // separate paging state for each list
+  const [list1, setList1] = useState<DocumentData[]>([]);
+  const [list2, setList2] = useState<DocumentData[]>([]);
+  const [loading, setLoading] = useState(true);
+
   const [page1, setPage1] = useState(1);
   const [page2, setPage2] = useState(1);
 
-  // navigation helpers for list1
-  const prev1 = () => setPage1(p => Math.max(1, p - 1));
-  const next1 = () => setPage1(p => Math.min(list1.length, p + 1));
-  const current1 = list1[page1 - 1];
+  const prev1 = () => setPage1((p) => Math.max(1, p - 1));
+  const next1 = () => setPage1((p) => Math.min(list1.length, p + 1));
 
-  // navigation helpers for list2
-  const prev2 = () => setPage2(p => Math.max(1, p - 1));
-  const next2 = () => setPage2(p => Math.min(list2.length, p + 1));
+  const prev2 = () => setPage2((p) => Math.max(1, p - 1));
+  const next2 = () => setPage2((p) => Math.min(list2.length, p + 1));
+
+  const current1 = list1[page1 - 1];
   const current2 = list2[page2 - 1];
+
+
+  useEffect(() => {
+    const unsub1 = onSnapshot(query(collection(db, 'L1'), orderBy('createdAt', 'desc')), (snapshot) => {
+      setList1(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    });
+
+    const unsub2 = onSnapshot(query(collection(db, 'L2'), orderBy('createdAt', 'desc')), (snapshot) => {
+      setList2(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    });
+
+    setLoading(false);
+    return () => {
+      unsub1();
+      unsub2();
+    };
+  }, []);
+
+  if (loading) {
+    return <div className="min-h-screen bg-black text-white flex items-center justify-center">Loading...</div>;
+  }
 
   return (
     <div className="relative min-h-screen text-white pt-32 overflow-hidden bg-black">
@@ -48,31 +78,39 @@ export default function Lineup() {
 
       <div className="relative z-10 max-w-[1300px] mx-auto px-8 grid grid-cols-12 gap-8 pb-32">
 
-        {/* Lineup 1 */}
+        {/* L1 Lineup */}
         <div className="col-span-12">
           <h2 className="text-4xl font-semibold text-center">L1</h2>
         </div>
-        <LineupContent
-          current={current1}
-          players={list1}
-          page={page1}
-          setPage={setPage1}
-          prev={prev1}
-          next={next1}
-        />
+        {list1.length > 0 ? (
+          <LineupContent
+            current={current1}
+            players={list1}
+            page={page1}
+            setPage={setPage1}
+            prev={prev1}
+            next={next1}
+          />
+        ) : (
+          <p className="col-span-12 text-center text-gray-400">No players in L1</p>
+        )}
 
-        {/* Lineup 2 */}
+        {/* L2 Lineup */}
         <div className="col-span-12 mt-12">
           <h2 className="text-4xl font-semibold text-center">L2</h2>
         </div>
-        <LineupContent
-          current={current2}
-          players={list2}
-          page={page2}
-          setPage={setPage2}
-          prev={prev2}
-          next={next2}
-        />
+        {list2.length > 0 ? (
+          <LineupContent
+            current={current2}
+            players={list2}
+            page={page2}
+            setPage={setPage2}
+            prev={prev2}
+            next={next2}
+          />
+        ) : (
+          <p className="col-span-12 text-center text-gray-400">No players in L2</p>
+        )}
 
       </div>
     </div>
