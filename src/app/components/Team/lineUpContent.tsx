@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import ProfileCard from './ProfileCard';
 import PaginationControls from './PaginationControls';
 import { FaInstagram, FaDiscord, FaYoutube } from 'react-icons/fa';
@@ -22,10 +22,22 @@ interface LineupContentProps {
 }
 
 export default function LineupContent({ current, players, page, setPage, prev, next }: LineupContentProps) {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (cardRefs.current[page - 1]) {
+      cardRefs.current[page - 1]?.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'start',
+        block: 'nearest',
+      });
+    }
+  }, [page]);
+
   return (
     <>
       {/* LEFT PANEL */}
-      <div className="lg:col-span-5 col-span-12 flex flex-col justify-between ">
+      <div className="lg:col-span-5 col-span-12 flex flex-col justify-between">
         <div className="space-y-6">
           <div className="flex items-center space-x-2">
             <span className="block w-1 h-6 bg-[#610bc6]" />
@@ -44,7 +56,7 @@ export default function LineupContent({ current, players, page, setPage, prev, n
               href={current.instagram_url || '#'}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"
+              className="hover:text-purple-200 transition-transform hover:scale-150 duration-300"
             >
               <FaInstagram size={28} />
             </a>
@@ -71,14 +83,20 @@ export default function LineupContent({ current, players, page, setPage, prev, n
       </div>
 
       {/* RIGHT PANEL: profile cards */}
-      <div className="lg:col-span-7 col-span-12 flex justify-center items-start space-x-6 pt-12">
+      <div
+        className="lg:col-span-7 col-span-12 flex items-start space-x-6 pt-12 overflow-auto overflow-y-hidden overflow-x-hidden  no-scrollbar scroll-smooth"
+        style={{ WebkitOverflowScrolling: 'touch' }}
+      >
         {players.map((item, idx) => (
-          <ProfileCard
+          <div
             key={idx}
-            player={item as any}
-            active={idx === page - 1}
+            ref={(el) => { cardRefs.current[idx] = el; }}
             onClick={() => setPage(idx + 1)}
-          />
+          >
+            <ProfileCard player={item as any} active={idx === page - 1} onClick={function (): void {
+              throw new Error('Function not implemented.');
+            } } />
+          </div>
         ))}
       </div>
     </>

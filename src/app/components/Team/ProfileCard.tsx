@@ -20,7 +20,7 @@ export default function ProfileCard({ player, active, onClick }: ProfileCardProp
     <div
       onClick={onClick}
       className={`
-        team-angled w-64 cursor-pointer transform transition-transform duration-300
+        team-angled min-w-64 cursor-pointer transform transition-transform duration-300 
         ${active ? 'scale-110' : 'scale-100'}
       `}
     >
