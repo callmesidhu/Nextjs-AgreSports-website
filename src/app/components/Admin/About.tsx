@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
-import { db } from "../../lib/firebase"; // Your firebase config with firestore export
+import { db } from "../../lib/firebase"; 
 
 const About = () => {
   const [imageUrl, setImageUrl] = useState("");
