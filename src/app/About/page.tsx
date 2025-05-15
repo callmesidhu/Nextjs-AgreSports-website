@@ -25,7 +25,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Heading */}
         <motion.h2
-          className="text-5xl font-extrabold text-center mb-12 tracking-wide"
+          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-12 tracking-wide"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
