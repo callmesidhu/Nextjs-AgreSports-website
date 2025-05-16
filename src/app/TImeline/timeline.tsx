@@ -18,26 +18,53 @@ import FlashOnIcon from '@mui/icons-material/FlashOn'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
 import { Card, CardContent } from '@mui/material'
+import { Shield, Sparkles } from 'lucide-react'
 
 const timelineData = [
   {
-    year: '2012',
-    title: 'lorem1',
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit.`,
+    year: 'July 2022',
+    title: 'The Beginning',
+    description: `Alpha Gaming Regiment (AGR) was founded in July 2022 with a mission to create a competitive esports organization focused on skill, discipline, and community. From humble beginnings, AGR was built on a shared passion for gaming and a desire to uplift the esports scene in Kerala and beyond.`,
     icon: <StarIcon />,
-  },
-  {
-    year: '2014',
-    title: 'lorem2',
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit.`,
+  },{
+    title: "Foundation of AGR",
+    description:
+      "Alpha Gaming Regiment was founded in July 2022 with a mission to create a competitive esports organization focused on skill, discipline, and community.",
+    icon: <Sparkles/>,
+    date: "July 2022",
+    type: "milestone",
+  }, {
+    title: "Local Tournaments & Scrims",
+    description:
+      "Participated in local tournaments and community scrims through early 2023 to build team synergy and tactical foundations.",
+    icon: <Shield />,
+    date: "2022–Early 2023",
+    type: "milestone",
+  },  {
+    year: 'Early 2023',
+    title: 'Laying the Foundation',
+    description: `AGR started its journey by participating in local tournaments, organizing community scrims, and building dedicated rosters for titles like Valorant and PUBG. The focus during this period was team synergy, tactical development, and consistent performance.`,
     icon: <EmojiEventsIcon />,
-  },
-  {
-    year: '2016',
-    title: 'lorem3',
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam mollitia exercitationem eaque minima sed officiis velit.`,
+  }, {
+    year: 'Mid–Late 2023',
+    title: 'The Breakthrough Year',
+    description: `2023 marked AGR’s first major competitive success, with several tournament victories that solidified its position in Kerala’s rising esports scene.`,
     icon: <FlashOnIcon />,
   },
+
+   {
+    title: "Expansion to Two Lineups",
+    description:
+      "Expanded into two competitive lineups by late 2024, increasing depth and participation.",
+    icon: <Sparkles />,
+    date: "Late 2024",
+    type: "milestone",
+  },
+  
+ 
+  
+
+ 
 ]
 
 const fadeInUp = {
@@ -96,15 +123,15 @@ export default function TimelineWithAnimation() {
                 <TimelineConnector
                   sx={{
                     height: '80px',
-                    backgroundColor: '#a903fc',
+                    backgroundColor: '#610bc6',
                     width: '3px',
                   }}
                 />
                 {/* Centering the icon in the dot */}
                 <TimelineDot
                   sx={{
-                    backgroundColor: '#a903fc',
-                    boxShadow: '0 0 10px #a903fc',
+                    backgroundColor: '#610bc6',
+                    boxShadow: '0 0 10px #610bc6',
                     width: '40px',
                     height: '40px',
                     zIndex: 1,
@@ -118,7 +145,7 @@ export default function TimelineWithAnimation() {
                 <TimelineConnector
                   sx={{
                     height: '80px',
-                    backgroundColor: '#a903fc',
+                    backgroundColor: '#610bc6',
                     width: '3px',
                   }}
                 />
@@ -145,7 +172,7 @@ export default function TimelineWithAnimation() {
         // Small Screen Card Layout
         <div className="flex flex-col gap-6 relative z-10">
           {/* Vertical line for mobile */}
-          <div className="absolute left-[16px] top-0 bottom-0 w-[2px] bg-[#a903fc] opacity-50" />
+          <div className="absolute left-[16px] top-0 bottom-0 w-[2px] bg-[#610bc6] opacity-50" />
 
           {timelineData.map((item, i) => (
             <motion.div

@@ -3,24 +3,27 @@ import Title from "../Title/title";
 import TimelineWithAnimation from '../TImeline/timeline'
 import AchievementsPage from "../Achievement/achievement";
 import LatestVideos from "../latestvideos/LatestVideos";
-import { HeroHighlight,Highlight } from '../components/ui/hero-highlight';
-import { HeroParallax } from '../components/ui/hero-parallax';
-import { products } from '../Hero/Hero';
+import ManagementPage from '../Management/page';
+import About from '../About/page';
+import Header from '../Header/header';
+import HeroSection from '../Hero/Hero';
+
 function HomeSection() {
   return (
     <>
-     {/* <HeroHighlight containerClassName="h-screen" className="text-center px-4">
-      <h1 className="text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
-        Welcome to <br /> <Highlight>Alpha Gaming Regiment (AGR)</Highlight>
-      </h1>
-   
-    </HeroHighlight> */}
-       <HeroParallax products={products} />
+    <Header />
+       <HeroSection />
        <Title mainTitle="our" subTitle="journey"/>
        <TimelineWithAnimation/>
+       <section id="about">
+        <About />
+      </section>
        <Title mainTitle="our" subTitle="achievements"/>
        <AchievementsPage/>
-       <Title mainTitle="Latest" subTitle="Videos"/>
+       <section id="management">
+        <ManagementPage />
+      </section>
+       <Title mainTitle="suggestion" subTitle="Videos"/>
        <LatestVideos />
     </>
   )

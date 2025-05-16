@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "./components/ui/resizable-navbar";
 import Header from "./Header/header";
 import Footer from "./Footer/footer";
+import { poppins } from "./fonts/poppins";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -75,7 +76,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
+  return (      
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} `}>
       <head>
       <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -84,8 +85,7 @@ export default function RootLayout({
         <meta property="og:url" content="https://agresports.org" />
         <meta property="og:type" content="website" />
       </head>
-      <body className="font-sans">
-    
+      <body className={`${poppins.className}`}>
         {children}
         <Footer />
       </body>

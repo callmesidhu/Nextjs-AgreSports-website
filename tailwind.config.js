@@ -3,6 +3,9 @@
 module.exports = {
       theme: {
         extend: {
+          colors: {
+            'ogpurple': '#610bc6',
+          },
           keyframes: {
             dotsMove: {
               '0%': { backgroundPosition: '0 0' },
