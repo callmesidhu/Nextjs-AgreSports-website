@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Metal_Mania } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "./components/ui/resizable-navbar";
-import Header from "./Header/header";
-import Footer from "./Footer/footer";
 import { poppins } from "./fonts/poppins";
+import LayoutWrapper from "./LayoutWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +17,7 @@ const geistMono = Geist_Mono({
 const metalMania = Metal_Mania({
   variable: "--font-metal-mania",
   subsets: ["latin"],
-  weight: "400"
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -71,23 +69,19 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
 };
+
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  return (      
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} `}>
-      <head>
-      <link rel="icon" href="/favicon.ico" sizes="any" />
-      
-        <meta property="og:image" content="https://agresports.org/logo.png" />
-        <meta property="og:url" content="https://agresports.org" />
-        <meta property="og:type" content="website" />
-      </head>
-      <body className={`${poppins.className}`}>
-        {children}
-        <Footer />
+}) {
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${metalMania.variable}`}
+    >
+      <body className={poppins.className}>
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );

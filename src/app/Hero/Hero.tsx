@@ -165,7 +165,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 flex flex-col items-center justify-center z-20 px-4">
         <h1
           style={{ fontFamily: "'badrock', sans-serif", letterSpacing: '2px', fontWeight: 400 } }
-          className="text-6xl md:text-9xl font-bold text-white uppercase"
+          className="text-5xl md:text-9xl font-bold text-white uppercase text-center"
         >
           <span
             className={`inline-block transition-all duration-700 ${
@@ -175,7 +175,7 @@ export default function HeroSection() {
             {carouselTitles[currentSlide]}
           </span>
         </h1>
-        <p className="text-md uppercase md:text-2xl text-gray-200 max-w-4xlmx-auto mb-8 h-16 flex items-center text-center justify-center">
+        <p className="text-sm uppercase md:text-xl text-gray-200 max-w-4xl mx-auto mb-8 flex items-center text-center justify-center">
           <span
             className={`inline-block transition-all duration-700 ${
               textVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
