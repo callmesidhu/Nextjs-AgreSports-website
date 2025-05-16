@@ -41,7 +41,7 @@ const Teams: React.FC = () => {
   const [formData, setFormData] = useState<FormDataType>(initialFormData);
   const [members, setMembers] = useState<TeamMember[]>([]);
 
-  // Fetch members from Firestore when selectedCollection changes
+
   useEffect(() => {
     const q = query(collection(db, selectedCollection), orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -84,11 +84,11 @@ const Teams: React.FC = () => {
 
   return (
     <div className="flex flex-col md:flex-row p-4 gap-6">
-      {/* Form Panel */}
+
       <div className="w-full md:w-1/2">
         <h1 className="text-2xl font-bold mb-4">Admin Panel</h1>
 
-        {/* Collection Selector */}
+
         <div className="mb-4">
           <label className="mr-4">
             <input
@@ -112,7 +112,7 @@ const Teams: React.FC = () => {
           </label>
         </div>
 
-        {/* Form */}
+
         <form onSubmit={handleSubmit} className="space-y-3">
           {(Object.keys(formData) as (keyof FormDataType)[]).map((field) => (
             <div key={field}>
@@ -138,7 +138,7 @@ const Teams: React.FC = () => {
         </form>
       </div>
 
-      {/* Team Members Display */}
+
       <div className="w-full md:w-1/2">
         <h2 className="text-xl font-semibold mb-4">Team Members - {selectedCollection}</h2>
         {members.length === 0 ? (

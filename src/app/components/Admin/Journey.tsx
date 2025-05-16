@@ -9,7 +9,7 @@ import {
   doc,
   query,
   orderBy,
-  serverTimestamp,   // <-- Import serverTimestamp here
+  serverTimestamp,  
 } from "firebase/firestore";
 
 interface JourneyMilestone {
@@ -17,7 +17,7 @@ interface JourneyMilestone {
   title: string;
   description: string;
   date: string;
-  createdAt?: any;  // Timestamp type from Firestore, optional because it might be undefined initially
+  createdAt?: any;  
 }
 
 const Journey = () => {
@@ -29,7 +29,7 @@ const Journey = () => {
   const [date, setDate] = useState("");
 
   useEffect(() => {
-    // Query by createdAt timestamp ascending order
+
     const q = query(collection(db, "journey"), orderBy("createdAt", "asc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const milestones: JourneyMilestone[] = snapshot.docs.map((doc) => ({
@@ -55,7 +55,7 @@ const Journey = () => {
         title,
         description,
         date,
-        createdAt: serverTimestamp(),  // Add createdAt timestamp here
+        createdAt: serverTimestamp(),  
       });
       setTitle("");
       setDescription("");

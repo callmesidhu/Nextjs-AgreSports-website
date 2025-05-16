@@ -12,7 +12,7 @@ const About = () => {
 
   const aboutCollectionRef = collection(db, "about");
 
-  // Fetch all image URLs from Firestore
+  
   const fetchImages = async () => {
     setLoading(true);
     try {
@@ -33,7 +33,7 @@ const About = () => {
     fetchImages();
   }, []);
 
-  // Add new image URL to Firestore
+
   const handleAddImage = async () => {
     if (!imageUrl.trim()) {
       setError("Please enter a valid image URL");
@@ -42,7 +42,7 @@ const About = () => {
     try {
       await addDoc(aboutCollectionRef, { url: imageUrl.trim() });
       setImageUrl("");
-      fetchImages(); // Refresh list
+      fetchImages();
       setError("");
     } catch (err) {
       setError("Failed to add image");
@@ -50,11 +50,10 @@ const About = () => {
     }
   };
 
-  // Delete image URL by document id
   const handleDeleteImage = async (id: string) => {
     try {
       await deleteDoc(doc(db, "about", id));
-      fetchImages(); // Refresh list
+      fetchImages(); 
     } catch (err) {
       setError("Failed to delete image");
       console.error(err);
