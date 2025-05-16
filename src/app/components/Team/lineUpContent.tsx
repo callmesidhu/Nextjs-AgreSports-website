@@ -36,7 +36,7 @@ export default function LineupContent({ current, players, page, setPage, prev, n
 
   return (
     <>
-      {/* LEFT PANEL */}
+ 
       <div className="lg:col-span-5 col-span-12 flex flex-col justify-between">
         <div className="space-y-6">
           <div className="flex items-center space-x-2">
@@ -50,7 +50,7 @@ export default function LineupContent({ current, players, page, setPage, prev, n
           </h1>
           <p className="text-gray-300 leading-relaxed">{current.description}</p>
 
-          {/* Social Media Icons below description */}
+   
           <div className="flex space-x-6 mt-4 text-gray-400">
             <a
               href={current.instagram_url || '#'}
@@ -82,7 +82,7 @@ export default function LineupContent({ current, players, page, setPage, prev, n
         <PaginationControls page={page} total={players.length} onPrev={prev} onNext={next} />
       </div>
 
-      {/* RIGHT PANEL: profile cards */}
+    
       <div
         className="lg:col-span-7 col-span-12 flex items-start space-x-6 pt-12 overflow-auto overflow-y-hidden overflow-x-hidden  no-scrollbar scroll-smooth"
         style={{ WebkitOverflowScrolling: 'touch' }}

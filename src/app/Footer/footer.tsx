@@ -4,9 +4,7 @@ import {
   FaYoutube,
   FaTwitter,
   FaInstagram,
-  FaWordpress,
   FaDiscord,
-  FaPhone,
   FaPhoneAlt,
 } from "react-icons/fa";
 
@@ -16,7 +14,7 @@ export default function Footer() {
       <div className="absolute inset-0 opacity-30 bg-gradient-to-tr from-purple-700 via-transparent to-purple-500 blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 items-center justify-items-center">
-        {/* Contact Icons */}
+ 
         <div className="flex flex-col gap-4">
           <h2 className="text-3xl font-bold text-center">Contact Us</h2>
           <a href="tel:1234567890" className="text-xl hover:scale-110 transition-transform duration-300 flex flex-row hover:text-purple-200">
@@ -35,7 +33,7 @@ export default function Footer() {
 
         </div>
 
-        {/* Social Icons */}
+
         <div className="flex gap-6 text-2xl sm:text-3xl justify-center">
           <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaFacebookF /></a>
           <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaYoutube /></a>
@@ -44,7 +42,7 @@ export default function Footer() {
           <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaDiscord /></a>
         </div>
 
-        {/* Animated Glowing Circle */}
+
         
       </div>
 

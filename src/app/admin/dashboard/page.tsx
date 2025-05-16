@@ -8,9 +8,10 @@ import About from "../../components/Admin/About";
 import Achievements from "../../components/Admin/Achievements";
 import Journey from "../../components/Admin/Journey";
 import Team from "../../components/Admin/Team";
+import Management from "../../components/Admin/Management"; 
 import Image from "next/image";
 
-type Tab = "About" | "Achievements" | "Journey" | "Team";
+type Tab = "About" | "Achievements" | "Journey" | "Team" | "Management"; 
 
 const DashboardPage = () => {
   const router = useRouter();
@@ -52,6 +53,8 @@ const DashboardPage = () => {
         return <Journey />;
       case "Team":
         return <Team />;
+      case "Management":
+        return <Management />;
       default:
         return <About />;
     }
@@ -61,15 +64,15 @@ const DashboardPage = () => {
     <div className="min-h-screen bg-gray-900 text-white p-6 flex">
       <aside className="w-64 bg-violet-900 p-6 rounded-lg shadow-lg h-screen">
         <Image
-                    src="/floor.png"
-                    alt="Logo"
-                    width={300}
-                    height={150}
-                    className="z-10 relative w-full"
-                  />
+          src="/floor.png"
+          alt="Logo"
+          width={300}
+          height={150}
+          className="z-10 relative w-full"
+        />
         <h2 className="text-2xl font-bold mb-8">Admin Panel</h2>
         <nav className="space-y-4">
-          {(["About", "Achievements", "Journey", "Team"] as Tab[]).map((tab) => (
+          {(["About", "Achievements", "Journey", "Team", "Management"] as Tab[]).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
