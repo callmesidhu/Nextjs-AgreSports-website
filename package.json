@@ -18,7 +18,7 @@
     "@supabase/supabase-js": "^2.49.4",
     "@tabler/icons-react": "^3.31.0",
     "clsx": "^2.1.1",
-    "firebase": "^11.7.1",
+    "firebase": "^11.7.3",
     "framer-motion": "^12.7.4",
     "lucide-react": "^0.488.0",
     "motion": "^12.6.5",

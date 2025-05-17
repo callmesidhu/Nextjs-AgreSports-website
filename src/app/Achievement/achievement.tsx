@@ -14,7 +14,7 @@ type Achievement = {
   type: "victory" | "award" | "milestone";
 };
 
-const iconMap = {
+const iconMap: Record<Achievement["type"], React.ReactNode> = {
   victory: <Trophy className="w-6 h-6 text-gray-300" />,
   award: <Medal className="w-6 h-6 text-gray-300" />,
   milestone: <span className="text-yellow-300">★</span>,
@@ -46,9 +46,8 @@ export default function AchievementsPage() {
   const visibleItems = achievements.slice(0, visibleCount);
 
   return (
-    <main className="min-h-screen bg-black px-6 py-16 text-white">
+    <main className="min-h-screen bg-black px-6 py-16 text-white ">
       <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold">Our Achievements</h1>
         <p className="text-gray-400 mt-2">A chronicle of our organizational milestones</p>
       </div>
 
@@ -63,11 +62,11 @@ export default function AchievementsPage() {
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className={`relative min-w-96 ${
+                className={`relative  ${
                   isLeft
                     ? "lg:justify-self-end lg:pr-8 text-right"
                     : "lg:justify-self-start lg:pl-8 text-left"
@@ -84,11 +83,11 @@ export default function AchievementsPage() {
 
                 <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 shadow-lg hover:border-purple-700 hover:shadow-xl transition">
                   <div className="flex items-center mb-4 justify-between">
-                    {isLeft ? null : iconMap[item.type]}
-                    <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-                    {isLeft ? iconMap[item.type] : null}
+                    {isLeft ? null : iconMap[item.type] }
+                    <h3 className={`text-xl font-semibold text-white ${isLeft ? "text-right" : "text-left"}`}>{item.title}</h3>
+                    {isLeft ? (iconMap[item.type]) : null}
                   </div>
-                  <p className="text-gray-300 mb-2">{item.description}</p>
+                  <p className="text-gray-300 mb-2 text-left">{item.description}</p>
                   <span className="inline-block text-xs font-medium bg-purple-800 text-white px-3 py-1 rounded-full">
                     {item.type}
                   </span>

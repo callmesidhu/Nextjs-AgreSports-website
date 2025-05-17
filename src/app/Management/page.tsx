@@ -84,9 +84,7 @@ export default function ManagementPage() {
                   <p className="text-sm text-gray-300 mb-2 uppercase tracking-wider">
                     {member.position}
                   </p>
-                  <motion.p className="text-gray-400 text-sm ">
-                    “{member.description}”
-                  </motion.p>
+                  
                 </div>
               </div>
             </motion.div>
