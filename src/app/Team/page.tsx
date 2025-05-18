@@ -59,14 +59,23 @@ export default function Lineup() {
     <div className="relative min-h-screen text-white pt-32 overflow-hidden bg-black">
       <TeamHeader />
 
-      {/* Dots Background */}
       <div
-        className="absolute inset-0 opacity-20 z-0 animate-[dotsMove_10s_linear_infinite]"
+        className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"
         style={{
-          backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
           backgroundSize: '20px 20px',
         }}
       />
+      <style jsx>{`
+        @keyframes dotsMove {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 40px 40px;
+          }
+        }
+      `}</style>
 
       {/* <button
         onClick={() => router.back()}
