@@ -104,6 +104,27 @@ export default function LatestVideos() {
 
   // --- MAIN CONTENT with animations ---
   return (
+    
+<div>
+  
+    <div
+      className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"
+      style={{
+        backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
+        backgroundSize: '20px 20px',
+      }}
+    />
+    <style jsx>{`
+      @keyframes dotsMove {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 40px 40px;
+        }
+      }
+    `}</style>
+
     <motion.section
       id="videos"
       className="bg-black text-white px-4 md:px-28 py-20 mb-10 "
@@ -219,5 +240,7 @@ export default function LatestVideos() {
         </motion.div>
       </div>
     </motion.section>
+    
+</div>
   );
 }

@@ -16,8 +16,8 @@ type NavItem = {
 const navLinks: NavItem[] = [
   { label: "Home",       type: "route",  to: "/"          },
   { label: "Team",       type: "route",  to: "/Team"     },
-  { label: "Management", type: "scroll", to: "management" },
-  { label: "About",      type: "scroll",  to: "about"     },
+  { label: "Management", type: "scroll", to: "/management" },
+  { label: "About",      type: "scroll",  to: "/about"     },
 ];
 
 export default function Header() {

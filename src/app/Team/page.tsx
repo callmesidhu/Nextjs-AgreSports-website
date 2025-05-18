@@ -14,9 +14,9 @@ import { useRouter } from 'next/navigation';
 
 import TeamHeader from '../Header/teamHeader';
 import LineupContent from '../components/Team/lineUpContent';
+import Header from '../Header/header';
 
 export default function Lineup() {
-  const router = useRouter();
 
   const [list1, setList1] = useState<DocumentData[]>([]);
   const [list2, setList2] = useState<DocumentData[]>([]);
@@ -57,8 +57,8 @@ export default function Lineup() {
 
   return (
     <div className="relative min-h-screen text-white pt-32 overflow-hidden bg-black">
-      <TeamHeader />
-
+      
+      <Header />
       {/* Dots Background */}
       <div
         className="absolute inset-0 opacity-20 z-0 animate-[dotsMove_10s_linear_infinite]"

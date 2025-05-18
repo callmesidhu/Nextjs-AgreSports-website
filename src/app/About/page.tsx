@@ -29,6 +29,7 @@ export default function About() {
 
   return (
     <section id="about" className="text-white py-20">
+      
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2
           className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-12 tracking-wide"

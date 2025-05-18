@@ -47,6 +47,7 @@ export default function AchievementsPage() {
 
   return (
     <main className="min-h-screen bg-black px-6 py-16 text-white ">
+      
       <div className="text-center mb-12">
         <p className="text-gray-400 mt-2">A chronicle of our organizational milestones</p>
       </div>
