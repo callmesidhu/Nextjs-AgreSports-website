@@ -35,11 +35,9 @@ export default function Footer() {
 
 
         <div className="flex gap-6 text-2xl sm:text-3xl justify-center">
-          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaFacebookF /></a>
           <a href="https://www.youtube.com/@agresports" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaYoutube /></a>
-          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaTwitter /></a>
           <a href="https://www.instagram.com/agr_esports/" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaInstagram /></a>
-          <a href="#" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaDiscord /></a>
+          <a href="https://dsc.gg/agresports" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaDiscord /></a>
         </div>
 
 
@@ -47,7 +45,7 @@ export default function Footer() {
       </div>
 
       <div className="mt-10 pt-6 text-center text-xs text-gray-300 border-t border-purple-300/50">
-        &copy; {new Date().getFullYear()} Your Organization
+      &copy; {new Date().getFullYear()} agresports.All rights reserved.
       </div>
     </footer>
   );

@@ -68,13 +68,13 @@ export default function Lineup() {
         }}
       />
 
-      <button
+      {/* <button
         onClick={() => router.back()}
         className="flex items-center text-[#610bc6] mb-8 space-x-2 hover:opacity-80 px-12"
       >
         <ChevronLeft size={20} />
         <span className="uppercase font-medium">Back</span>
-      </button>
+      </button> */}
 
       <div className="relative z-10 max-w-[1300px] mx-auto px-8 grid grid-cols-12 gap-8 pb-32">
 
