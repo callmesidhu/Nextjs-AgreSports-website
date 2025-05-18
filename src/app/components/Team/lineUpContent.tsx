@@ -23,17 +23,13 @@ interface LineupContentProps {
 
 export default function LineupContent({ current, players, page, setPage, prev, next }: LineupContentProps) {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
+    const containerRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    if (cardRefs.current[page - 1]) {
-      cardRefs.current[page - 1]?.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'start',
-        block: 'nearest',
-      });
+    const selectedCard = cardRefs.current[page - 1];
+    if (selectedCard && containerRef.current) {
+      selectedCard.scrollIntoView({ behavior: 'smooth', inline: 'start' });
     }
   }, [page]);
-
   return (
     <>
  

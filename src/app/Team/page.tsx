@@ -74,6 +74,7 @@ export default function Lineup() {
     return () => clearInterval(handle);
   }, [list2.length]);
 
+
   if (loading) {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
