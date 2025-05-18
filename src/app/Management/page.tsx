@@ -34,6 +34,23 @@ export default function ManagementPage() {
   return (
     <main className="pt-20 relative bg-black min-h-screen text-white px-4 md:px-12 overflow-hidden" id="management">
       <div
+        className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"
+        style={{
+          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+        }}
+      />
+      <style jsx>{`
+        @keyframes dotsMove {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 40px 40px;
+          }
+        }
+      `}</style>
+      <div
         className="absolute inset-0 z-0 opacity-30 animate-[pulse_6s_ease-in-out_infinite]"
         style={{
           background: 'radial-gradient(circle at center, rgba(128,0,128,0.4), transparent 60%)',

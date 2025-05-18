@@ -9,7 +9,6 @@ import {
   DocumentData,
 } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { ChevronLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 import TeamHeader from '../Header/teamHeader';
@@ -34,15 +33,21 @@ export default function Lineup() {
   const current1 = list1[page1 - 1];
   const current2 = list2[page2 - 1];
 
-
+  // fetch data from Firestore
   useEffect(() => {
-    const unsub1 = onSnapshot(query(collection(db, 'L1'), orderBy('createdAt', 'desc')), (snapshot) => {
-      setList1(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-    });
+    const unsub1 = onSnapshot(
+      query(collection(db, 'L1'), orderBy('createdAt', 'desc')),
+      (snapshot) => {
+        setList1(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      }
+    );
 
-    const unsub2 = onSnapshot(query(collection(db, 'L2'), orderBy('createdAt', 'desc')), (snapshot) => {
-      setList2(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-    });
+    const unsub2 = onSnapshot(
+      query(collection(db, 'L2'), orderBy('createdAt', 'desc')),
+      (snapshot) => {
+        setList2(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      }
+    );
 
     setLoading(false);
     return () => {
@@ -51,30 +56,54 @@ export default function Lineup() {
     };
   }, []);
 
+  // auto-advance L1 every 2 seconds
+  useEffect(() => {
+    if (list1.length === 0) return;
+    const handle = setInterval(() => {
+      setPage1(p => (p >= list1.length ? 1 : p + 1));
+    }, 2000);
+    return () => clearInterval(handle);
+  }, [list1.length]);
+
+  // auto-advance L2 every 2 seconds
+  useEffect(() => {
+    if (list2.length === 0) return;
+    const handle = setInterval(() => {
+      setPage2(p => (p >= list2.length ? 1 : p + 1));
+    }, 2000);
+    return () => clearInterval(handle);
+  }, [list2.length]);
+
+
   if (loading) {
-    return <div className="min-h-screen bg-black text-white flex items-center justify-center">Loading...</div>;
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        Loading...
+      </div>
+    );
   }
 
   return (
     <div className="relative min-h-screen text-white pt-32 overflow-hidden bg-black">
       <TeamHeader />
 
-      {/* Dots Background */}
       <div
-        className="absolute inset-0 opacity-20 z-0 animate-[dotsMove_10s_linear_infinite]"
+        className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"
         style={{
-          backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
           backgroundSize: '20px 20px',
         }}
       />
-
-      {/* <button
-        onClick={() => router.back()}
-        className="flex items-center text-[#610bc6] mb-8 space-x-2 hover:opacity-80 px-12"
-      >
-        <ChevronLeft size={20} />
-        <span className="uppercase font-medium">Back</span>
-      </button> */}
+      <style jsx>{`
+        @keyframes dotsMove {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 40px 40px;
+          }
+        }
+      `}</style>
 
       <div className="relative z-10 max-w-[1300px] mx-auto px-8 grid grid-cols-12 gap-8 pb-32">
 
