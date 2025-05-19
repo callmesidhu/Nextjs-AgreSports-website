@@ -21,15 +21,25 @@ interface LineupContentProps {
   next: () => void;
 }
 
+
 export default function LineupContent({ current, players, page, setPage, prev, next }: LineupContentProps) {
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-    const containerRef = useRef<HTMLDivElement | null>(null);
+const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  // Center the selected card horizontally—no vertical movement.
   useEffect(() => {
-    const selectedCard = cardRefs.current[page - 1];
-    if (selectedCard && containerRef.current) {
-      selectedCard.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+    const selected = cardRefs.current[page - 1];
+    const container = containerRef.current;
+    if (selected && container) {
+      const cardLeft = selected.offsetLeft;
+      const cardWidth = selected.offsetWidth;
+      const containerWidth = container.clientWidth;
+      const scrollX = cardLeft - (containerWidth / 2 - cardWidth / 2);
+
+      container.scrollTo({ left: scrollX, behavior: 'smooth' });
     }
   }, [page]);
+  
   return (
     <>
  
@@ -78,10 +88,15 @@ export default function LineupContent({ current, players, page, setPage, prev, n
         <PaginationControls page={page} total={players.length} onPrev={prev} onNext={next} />
       </div>
 
-    
-      <div
-        className="lg:col-span-7 col-span-12 flex items-start space-x-6 pt-12 overflow-auto overflow-y-hidden overflow-x-hidden  no-scrollbar scroll-smooth"
-        style={{ WebkitOverflowScrolling: 'touch' }}
+         <div
+        ref={containerRef}
+        className="
+          lg:col-span-7 col-span-12
+          flex flex-nowrap items-start space-x-6 pt-12
+          overflow-x-hidden overflow-y-hidden
+          scroll-smooth
+          snap-x snap-mandatory
+        "
       >
         {players.map((item, idx) => (
           <div
