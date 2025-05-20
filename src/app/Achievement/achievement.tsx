@@ -46,13 +46,17 @@ export default function AchievementsPage() {
   const visibleItems = achievements.slice(0, visibleCount);
 
   return (
-    <main className="min-h-screen bg-black px-6 py-16 text-white ">
-      
+    <main className="min-h-screen bg-black px-6 py-16 text-white " style={{
+          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+        }}>
+    
       <div className="text-center mb-12">
         <p className="text-gray-400 mt-2">A chronicle of our organizational milestones</p>
       </div>
 
       <div className="relative max-w-4xl mx-auto">
+        
         <div className="absolute inset-0 flex justify-center">
           <div className="w-px bg-purple-800 h-full" />
         </div>

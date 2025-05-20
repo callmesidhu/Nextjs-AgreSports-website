@@ -81,8 +81,9 @@ export default function LatestVideos() {
   // --- SKELETON while loading ---
   if (loading) {
     return (
-      <section id="videos" className="bg-black text-white px-4 md:px-28 py-16">
-        <div className="container mx-auto flex flex-col md:flex-row gap-8">
+      <section id="videos" className=" text-white px-4 md:px-28 py-16">
+    
+        <div className=" bg-black container mx-auto flex flex-col md:flex-row gap-8">
           {/* Player Skeleton */}
           <div className="md:w-1/2 w-full space-y-4 animate-pulse">
             <div className="w-full h-64 bg-gray-700 rounded-lg" />
@@ -106,34 +107,22 @@ export default function LatestVideos() {
   return (
     
 <div>
-  
-    <div
-      className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"
-      style={{
-        backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
-        backgroundSize: '20px 20px',
-      }}
-    />
-    <style jsx>{`
-      @keyframes dotsMove {
-        0% {
-          background-position: 0 0;
-        }
-        100% {
-          background-position: 40px 40px;
-        }
-      }
-    `}</style>
 
     <motion.section
       id="videos"
-      className="bg-black text-white px-4 md:px-28 py-20 mb-10 "
+      className="bg-black text-white px-4 md:px-28 py-20 mb-10 opacity-30"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
      viewport={{ once: true, amount: 0.2 }}
+     style={{
+          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+        }}
     >
+      
       <div className="container mx-auto flex flex-col md:flex-row gap-8">
+        
         {/* Video Player */}
         <motion.div
           className="md:w-1/2 w-full"
