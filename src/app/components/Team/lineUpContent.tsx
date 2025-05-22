@@ -91,11 +91,12 @@ const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
          <div
         ref={containerRef}
         className="
+          
           lg:col-span-7 col-span-12
-          flex flex-nowrap items-start space-x-6 pt-12
+          flex items-start pt-12
           overflow-x-hidden overflow-y-hidden
           scroll-smooth
-          snap-x snap-mandatory
+          bg-green-400
         "
       >
         {players.map((item, idx) => (
@@ -103,6 +104,7 @@ const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
             key={idx}
             ref={(el) => { cardRefs.current[idx] = el; }}
             onClick={() => setPage(idx + 1)}
+            className='p-5 px-12'
           >
             <ProfileCard player={item as any} active={idx === page - 1} onClick={function (): void {
               throw new Error('Function not implemented.');
