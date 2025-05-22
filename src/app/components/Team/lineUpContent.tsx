@@ -42,7 +42,28 @@ const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   return (
     <>
- 
+     <div
+        ref={containerRef}
+        className="
+          lg:col-span-7 col-span-12
+          flex items-start pt-12
+          overflow-x-hidden overflow-y-hiddenz
+          scroll-smooth
+        "
+      >
+        {players.map((item, idx) => (
+          <div
+            key={idx}
+            ref={(el) => { cardRefs.current[idx] = el; }}
+            onClick={() => setPage(idx + 1)}
+            className='p-5'
+          >
+            <ProfileCard player={item as any} active={idx === page - 1} onClick={function (): void {
+              throw new Error('Function not implemented.');
+            } } />
+          </div>
+        ))}
+      </div>
       <div className="lg:col-span-5 col-span-12 flex flex-col justify-between">
         <div className="space-y-6">
           <div className="flex items-center space-x-2">
@@ -88,30 +109,7 @@ const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
         <PaginationControls page={page} total={players.length} onPrev={prev} onNext={next} />
       </div>
 
-         <div
-        ref={containerRef}
-        className="
-          
-          lg:col-span-7 col-span-12
-          flex items-start pt-12
-          overflow-x-hidden overflow-y-hidden
-          scroll-smooth
-          bg-green-400
-        "
-      >
-        {players.map((item, idx) => (
-          <div
-            key={idx}
-            ref={(el) => { cardRefs.current[idx] = el; }}
-            onClick={() => setPage(idx + 1)}
-            className='p-5 px-12'
-          >
-            <ProfileCard player={item as any} active={idx === page - 1} onClick={function (): void {
-              throw new Error('Function not implemented.');
-            } } />
-          </div>
-        ))}
-      </div>
+     
     </>
   );
 }
