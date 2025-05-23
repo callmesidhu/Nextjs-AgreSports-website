@@ -34,7 +34,8 @@ const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
       const cardLeft = selected.offsetLeft;
       const cardWidth = selected.offsetWidth;
       const containerWidth = container.clientWidth;
-      const scrollX = cardLeft - (containerWidth / 2 - cardWidth / 2);
+      const screenValue = window.innerWidth >= 768 ? 1 : 2;
+      const scrollX = cardLeft - (containerWidth /screenValue  - cardWidth / 2);
 
       container.scrollTo({ left: scrollX, behavior: 'smooth' });
     }
@@ -42,7 +43,7 @@ const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   return (
     <>
- 
+     
       <div className="lg:col-span-5 col-span-12 flex flex-col justify-between">
         <div className="space-y-6">
           <div className="flex items-center space-x-2">
@@ -88,14 +89,17 @@ const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
         <PaginationControls page={page} total={players.length} onPrev={prev} onNext={next} />
       </div>
 
-         <div
+
+      <div
         ref={containerRef}
         className="
+          items-center lg:pt-12 pt-16
           lg:col-span-7 col-span-12
-          flex flex-nowrap items-start space-x-6 pt-12
+          flex flex-row 
           overflow-x-hidden overflow-y-hidden
           scroll-smooth
-          snap-x snap-mandatory
+          gap-6
+          justify-start
         "
       >
         {players.map((item, idx) => (
@@ -103,6 +107,7 @@ const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
             key={idx}
             ref={(el) => { cardRefs.current[idx] = el; }}
             onClick={() => setPage(idx + 1)}
+            className='p-5'
           >
             <ProfileCard player={item as any} active={idx === page - 1} onClick={function (): void {
               throw new Error('Function not implemented.');
@@ -110,6 +115,7 @@ const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
           </div>
         ))}
       </div>
+
     </>
   );
 }
