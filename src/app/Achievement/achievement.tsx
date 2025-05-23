@@ -46,13 +46,33 @@ export default function AchievementsPage() {
   const visibleItems = achievements.slice(0, visibleCount);
 
   return (
-    <main className="min-h-screen bg-black px-6 py-16 text-white ">
-    
-      <div className="text-center mb-12">
+    <> 
+      <style jsx global>{`
+        @keyframes dotsMove {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 40px 40px;
+          }
+        }
+        
+        .dots-background {
+          background-image: radial-gradient(#a903fc 1px, transparent 1px);
+          background-size: 20px 20px;
+          animation: dotsMove 10s linear infinite;
+        }
+      `}</style>
+   
+    <main className="min-h-screen bg-black px-6 py-16 text-white relative">
+      <div className="absolute inset-0 opacity-30 z-0 dots-background" />
+
+      <div className="text-center mb-12 relative z-10">
         <p className="text-gray-400 mt-2">A chronicle of our organizational milestones</p>
       </div>
 
-      <div className="relative max-w-4xl mx-auto">
+      <div className="relative max-w-4xl mx-auto z-10">
+        
         <div className="absolute inset-0 flex justify-center">
           <div className="w-px bg-purple-800 h-full" />
         </div>
@@ -100,7 +120,7 @@ export default function AchievementsPage() {
       </div>
 
       {visibleCount < achievements.length && (
-        <div className="text-center mt-8">
+        <div className="text-center mt-8 relative z-10">
           <button
             onClick={() => setVisibleCount((prev) => Math.min(prev + 4, achievements.length))}
             className="px-6 py-2 bg-purple-600 hover:bg-purple-500 rounded-full font-medium transition"
@@ -110,11 +130,12 @@ export default function AchievementsPage() {
         </div>
       )}
 
-      <div className="flex justify-center items-center gap-2 mt-8 text-purple-600 font-medium">
+      <div className="flex justify-center items-center gap-2 mt-8 text-purple-600 font-medium relative z-10">
         <span className="w-12 h-px bg-purple-800" />
         <span>Future achievements forthcoming</span>
         <span className="w-12 h-px bg-purple-800" />
       </div>
     </main>
+     </>
   );
 }

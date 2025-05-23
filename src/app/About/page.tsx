@@ -16,7 +16,6 @@ export default function About() {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [imageUrls, setImageUrls] = useState<string[]>([]);
 
-  
   useEffect(() => {
     const fetchImages = async () => {
       const snapshot = await getDocs(collection(db, "about"));
@@ -28,78 +27,99 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="text-white py-20 bg-black">
-      <div className="max-w-7xl mx-auto px-4">
-        <motion.h2
-          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-12 tracking-wide"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          ABOUT <span className="text-[#610bc6]">US</span>
-        </motion.h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-12 items-center">
-          <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+    <>
+      <style jsx global>{`
+        @keyframes dotsMove {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 40px 40px;
+          }
+        }
+        
+        .dots-background {
+          background-image: radial-gradient(#a903fc 1px, transparent 1px);
+          background-size: 20px 20px;
+          animation: dotsMove 10s linear infinite;
+        }
+      `}</style>
+      
+      <section id="about" className="text-white py-20 bg-black relative">
+        <div className="absolute inset-0 opacity-30 z-0 dots-background" />
+        
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <motion.h2
+            className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-12 tracking-wide"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <p className="text-lg text-gray-300 leading-relaxed">
-              Alpha Gaming Regiment (AGR) is a forward-thinking esports organization that nurtures raw talent and empowers hardworking individuals. We run dynamic online tournaments to showcase emerging stars, and are gearing up for in-person LAN events to bring the community together. Our mission is to build a vibrant, long-lasting esports ecosystem where every player has a chance to shine.
-            </p>
-          </motion.div>
+            ABOUT <span className="text-[#610bc6]">US</span>
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-12 items-center">
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Alpha Gaming Regiment (AGR) is a forward-thinking esports organization that nurtures raw talent and empowers hardworking individuals. We run dynamic online tournaments to showcase emerging stars, and are gearing up for in-person LAN events to bring the community together. Our mission is to build a vibrant, long-lasting esports ecosystem where every player has a chance to shine.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Swiper Carousel */}
+          <div className="mt-16">
+            <Swiper
+              style={{
+                "--swiper-navigation-color": "#fff",
+                "--swiper-pagination-color": "#fff",
+              } as React.CSSProperties}
+              loop={true}
+              spaceBetween={10}
+              navigation={true}
+              thumbs={{ swiper: thumbsSwiper }}
+              autoplay={{ delay: 1500, disableOnInteraction: false }}
+              modules={[FreeMode, Navigation, Thumbs, Autoplay]}
+              className="mySwiper2"
+            >
+              {imageUrls.map((url, i) => (
+                <SwiperSlide key={i}>
+                  <img
+                    src={url}
+                    alt={`Slide ${i + 1}`}
+                    className="w-full md:h-96 h-32 object-cover"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              loop={true}
+              spaceBetween={10}
+              slidesPerView={4}
+              freeMode={true}
+              watchSlidesProgress={true}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className="mySwiper mt-4 m-4"
+            >
+              {imageUrls.map((url, i) => (
+                <SwiperSlide key={i}>
+                  <img
+                    src={url}
+                    alt={`Thumbnail ${i + 1}`}
+                    className="w-full h-auto object-cover"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
-
-        {/* Swiper Carousel */}
-        <div className="mt-16">
-          <Swiper
-            style={{
-              "--swiper-navigation-color": "#fff",
-              "--swiper-pagination-color": "#fff",
-            } as React.CSSProperties}
-            loop={true}
-            spaceBetween={10}
-            navigation={true}
-            thumbs={{ swiper: thumbsSwiper }}
-            autoplay={{ delay: 1500, disableOnInteraction: false }}
-            modules={[FreeMode, Navigation, Thumbs, Autoplay]}
-            className="mySwiper2"
-          >
-            {imageUrls.map((url, i) => (
-              <SwiperSlide key={i}>
-                <img
-                  src={url}
-                  alt={`Slide ${i + 1}`}
-                  className="w-full md:h-96 h-32 object-cover"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          <Swiper
-            onSwiper={setThumbsSwiper}
-            loop={true}
-            spaceBetween={10}
-            slidesPerView={4}
-            freeMode={true}
-            watchSlidesProgress={true}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper mt-4 m-4"
-          >
-            {imageUrls.map((url, i) => (
-              <SwiperSlide key={i}>
-                <img
-                  src={url}
-                  alt={`Thumbnail ${i + 1}`}
-                  className="w-full h-auto object-cover"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

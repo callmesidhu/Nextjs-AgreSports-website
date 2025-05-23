@@ -13,10 +13,13 @@ import { useRouter } from 'next/navigation';
 
 import TeamHeader from '../Header/teamHeader';
 import LineupContent from '../components/Team/lineUpContent';
+
 import Loader from '../components/Loader';
 
+import Header from '../Header/header';
+
+
 export default function Lineup() {
-  const router = useRouter();
 
   const [list1, setList1] = useState<DocumentData[]>([]);
   const [list2, setList2] = useState<DocumentData[]>([]);

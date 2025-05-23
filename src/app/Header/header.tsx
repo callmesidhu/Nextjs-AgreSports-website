@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import NextLink from "next/link";                   // Next.js Link
-import { Link as ScrollLink } from "react-scroll";  // in-page scroll
+import NextLink from "next/link";                   
+import { Link as ScrollLink } from "react-scroll";  
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import logo from "../assests/agrLogoNew2.jpg.png";
@@ -15,9 +15,10 @@ type NavItem = {
 
 const navLinks: NavItem[] = [
   { label: "Home",       type: "route",  to: "/"          },
+  { label: "About",      type: "scroll",  to: "about"     },
+
   { label: "Team",       type: "route",  to: "/Team"     },
   { label: "Management", type: "scroll", to: "management" },
-  { label: "About",      type: "scroll",  to: "about"     },
 ];
 
 export default function Header() {
