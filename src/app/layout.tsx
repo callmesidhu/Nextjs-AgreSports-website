@@ -81,6 +81,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${metalMania.variable}`}
     >
       <body className={`${poppins.className} overflow-x-hidden`}>
+        
         <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
