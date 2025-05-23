@@ -122,7 +122,7 @@ export default function Lineup() {
             next={next1}
           />
         ) : (
-          <p className="col-span-12 text-center text-gray-400">No players in L1</p>
+          <Loader />
         )}
 
         {/* L2 Lineup */}
@@ -139,7 +139,7 @@ export default function Lineup() {
             next={next2}
           />
         ) : (
-          <p className="col-span-12 text-center text-gray-400">No players in L2</p>
+          <Loader />
         )}
 
       </div>

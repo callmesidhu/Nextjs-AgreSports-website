@@ -7,13 +7,21 @@ export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowLoader(false), 3000);
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 3000); // ⏳ 3 seconds
+
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <>
-      {showLoader ? <Loader /> : <HomeSection />}
-    </>
+    <div className="relative">
+      <HomeSection />
+      {showLoader && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
+          <Loader />
+        </div>
+      )}
+    </div>
   );
 }
