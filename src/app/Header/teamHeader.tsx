@@ -17,7 +17,7 @@ type NavItem = {
 
 const navLinks: NavItem[] = [
   { label: "Home",       type: "route",             to: "/"                    },
-  { label: "About", type: "cross-page-scroll", to: "about", targetPage: "/" },
+  { label: "About",      type: "cross-page-scroll", to: "about", targetPage: "/" },
   { label: "Team",       type: "route",             to: "/Team"               },
   { label: "Management", type: "cross-page-scroll", to: "management", targetPage: "/" },
 
@@ -58,7 +58,7 @@ export default function TeamHeader() {
 
   const renderLink = (item: NavItem, onClick?: () => void) => {
     const baseClasses =
-      "text-white text-lg font-medium tracking-wide relative group transition-all duration-300";
+      "text-white text-left text-lg font-medium tracking-wide relative group transition-all duration-300";
 
     const underline = (
       <span className="block h-[2px] w-0 group-hover:w-full bg-[#610bc6] transition-all duration-300 absolute bottom-0 left-0 rounded-full" />

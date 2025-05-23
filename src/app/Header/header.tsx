@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import NextLink from "next/link";                   // Next.js Link
-import { Link as ScrollLink } from "react-scroll";  // in-page scroll
+import NextLink from "next/link";                   
+import { Link as ScrollLink } from "react-scroll";  
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import logo from "../assests/agrLogoNew2.jpg.png";

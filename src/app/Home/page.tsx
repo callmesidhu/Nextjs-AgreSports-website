@@ -1,4 +1,3 @@
-
 import React from 'react'
 import Title from "../Title/title";
 import TimelineWithAnimation from '../TImeline/timeline'
@@ -11,6 +10,7 @@ import HeroSection from '../Hero/Hero';
 import Extra from '../components/ui/extra';
 
 function HomeSection() {
+
   return (
     <>
     <Header />
