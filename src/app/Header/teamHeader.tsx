@@ -5,22 +5,28 @@ import NextLink from "next/link";                   // Next.js Link
 import { Link as ScrollLink } from "react-scroll";  // in-page scroll
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import logo from "../assests/agrLogoNew2.jpg.png";
 
 type NavItem = {
   label: string;
-  type: "route" | "scroll";
+  type: "route" | "scroll" | "cross-page-scroll";
   to: string;
+  targetPage?: string; // for cross-page scrolling
 };
 
 const navLinks: NavItem[] = [
-  { label: "Home",       type: "route",  to: "/"          },
-  { label: "Team",       type: "route",  to: "/Team"     },
+  { label: "Home",       type: "route",             to: "/"                    },
+  { label: "About", type: "cross-page-scroll", to: "about", targetPage: "/" },
+  { label: "Team",       type: "route",             to: "/Team"               },
+  { label: "Management", type: "cross-page-scroll", to: "management", targetPage: "/" },
+
 ];
 
 export default function TeamHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
+  const router = useRouter();
 
   // hide on scroll down / show on scroll up
   useEffect(() => {
@@ -33,6 +39,22 @@ export default function TeamHeader() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleCrossPageScroll = (targetPage: string, sectionId: string) => {
+    // If we're already on the target page, just scroll
+    if (window.location.pathname === targetPage) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    } else {
+      // Navigate to the page with hash
+      router.push(`${targetPage}#${sectionId}`);
+    }
+  };
 
   const renderLink = (item: NavItem, onClick?: () => void) => {
     const baseClasses =
@@ -53,6 +75,20 @@ export default function TeamHeader() {
           {item.label}
           {underline}
         </NextLink>
+      );
+    } else if (item.type === "cross-page-scroll") {
+      return (
+        <button
+          key={item.label}
+          className={baseClasses + " cursor-pointer"}
+          onClick={() => {
+            handleCrossPageScroll(item.targetPage!, item.to);
+            onClick?.();
+          }}
+        >
+          {item.label}
+          {underline}
+        </button>
       );
     } else {
       return (

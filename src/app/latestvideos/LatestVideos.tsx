@@ -81,9 +81,9 @@ export default function LatestVideos() {
   // --- SKELETON while loading ---
   if (loading) {
     return (
-      <section id="videos" className=" text-white px-4 md:px-28 py-16">
-    
-        <div className=" bg-black container mx-auto flex flex-col md:flex-row gap-8">
+      <section id="videos" className="bg-black text-white px-4 md:px-28 py-16 relative">
+        <div className="absolute inset-0 opacity-30 z-0 dots-background" />
+        <div className="container mx-auto flex flex-col md:flex-row gap-8 relative z-10">
           {/* Player Skeleton */}
           <div className="md:w-1/2 w-full space-y-4 animate-pulse">
             <div className="w-full h-64 bg-gray-700 rounded-lg" />
@@ -105,23 +105,35 @@ export default function LatestVideos() {
 
   // --- MAIN CONTENT with animations ---
   return (
-    
-<div>
-
+<>
+   <style jsx global>{`
+        @keyframes dotsMove {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 40px 40px;
+          }
+        }
+        
+        .dots-background {
+          background-image: radial-gradient(#a903fc 1px, transparent 1px);
+          background-size: 20px 20px;
+          animation: dotsMove 10s linear infinite;
+        }
+      `}</style>
+  <div>
     <motion.section
       id="videos"
-      className="bg-black text-white px-4 md:px-28 py-20 mb-10 opacity-30"
+      className="bg-black text-white px-4 md:px-28 py-20 mb-10 relative"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-     viewport={{ once: true, amount: 0.2 }}
-     style={{
-          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
-          backgroundSize: '20px 20px',
-        }}
+      viewport={{ once: true, amount: 0.2 }}
     >
-      
-      <div className="container mx-auto flex flex-col md:flex-row gap-8">
+      <div className="absolute inset-0 opacity-30 z-0 dots-background" />
+
+      <div className="container mx-auto flex flex-col md:flex-row gap-8 relative z-10">
         
         {/* Video Player */}
         <motion.div
@@ -231,5 +243,6 @@ export default function LatestVideos() {
     </motion.section>
     
 </div>
+</>
   );
 }

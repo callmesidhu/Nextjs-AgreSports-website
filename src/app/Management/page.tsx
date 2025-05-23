@@ -32,16 +32,8 @@ export default function ManagementPage() {
   }, []);
 
   return (
-    <main className="pt-20 relative bg-black min-h-screen text-white px-4 md:px-12 overflow-hidden" id="management">
-    
-      <div
-        className="absolute inset-0 z-0 opacity-30 animate-[pulse_6s_ease-in-out_infinite]"
-        style={{
-          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
-          backgroundSize: '20px 20px',
-        }}
-      />
-      <style jsx>{`
+    <>
+    <style jsx global>{`
         @keyframes dotsMove {
           0% {
             background-position: 0 0;
@@ -50,7 +42,16 @@ export default function ManagementPage() {
             background-position: 40px 40px;
           }
         }
+        
+        .dots-background {
+          background-image: radial-gradient(#a903fc 1px, transparent 1px);
+          background-size: 20px 20px;
+          animation: dotsMove 10s linear infinite;
+        }
       `}</style>
+    <main className="pt-20 relative bg-black min-h-screen text-white px-4 md:px-12 overflow-hidden" id="management">
+    
+      <div className="absolute inset-0 opacity-30 z-0 dots-background" />
 
 
       <div className="relative z-10">
@@ -105,5 +106,6 @@ export default function ManagementPage() {
         </section>
       </div>
     </main>
+    </>
   );
 }

@@ -122,14 +122,9 @@ export default function TimelineWithAnimation() {
   return (
     <section className="relative bg-black text-white py-20 px-4 sm:px-10 md:px-16 lg:px-28 overflow-hidden">
       {/* Background dots */}
-      <div
-        className="absolute inset-0 opacity-30 z-0 animate-[dotsMove_10s_linear_infinite]"
-        style={{
-          backgroundImage: 'radial-gradient(#a903fc 1px, transparent 1px)',
-          backgroundSize: '20px 20px',
-        }}
-      />
-      <style jsx>{`
+              <div className="absolute inset-0 opacity-30 z-0 dots-background" />
+
+      <style jsx global>{`
         @keyframes dotsMove {
           0% {
             background-position: 0 0;
@@ -137,6 +132,12 @@ export default function TimelineWithAnimation() {
           100% {
             background-position: 40px 40px;
           }
+        }
+        
+        .dots-background {
+          background-image: radial-gradient(#a903fc 1px, transparent 1px);
+          background-size: 20px 20px;
+          animation: dotsMove 10s linear infinite;
         }
       `}</style>
 

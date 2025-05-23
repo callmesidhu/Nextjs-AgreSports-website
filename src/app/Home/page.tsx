@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Title from "../Title/title";
 import TimelineWithAnimation from '../TImeline/timeline'
@@ -7,12 +8,14 @@ import ManagementPage from '../Management/page';
 import About from '../About/page';
 import Header from '../Header/header';
 import HeroSection from '../Hero/Hero';
+import Extra from '../components/ui/extra';
 
 function HomeSection() {
   return (
     <>
     <Header />
        <HeroSection />
+    
        <Title mainTitle="our" subTitle="journey"/>
        <TimelineWithAnimation/>
        <section id="about">
@@ -23,6 +26,8 @@ function HomeSection() {
        <section id="management">
         <ManagementPage />
       </section>
+      <Title mainTitle="LAN" subTitle="Tournaments & Sponsorships"/>
+      <Extra />
        <Title mainTitle="suggestion" subTitle="Videos"/>
        <LatestVideos />
     </>
