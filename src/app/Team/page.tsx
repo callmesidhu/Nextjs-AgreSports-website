@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 
 import TeamHeader from '../Header/teamHeader';
 import LineupContent from '../components/Team/lineUpContent';
+import Loader from '../components/Loader';
 
 export default function Lineup() {
   const router = useRouter();
@@ -77,9 +78,9 @@ export default function Lineup() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        Loading...
-      </div>
+      <>
+        <Loader/>
+      </>
     );
   }
 
