@@ -9,14 +9,9 @@ import {
   DocumentData,
 } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { useRouter } from 'next/navigation';
-
 import TeamHeader from '../Header/teamHeader';
 import LineupContent from '../components/Team/lineUpContent';
-
 import Loader from '../components/Loader';
-
-import Header from '../Header/header';
 
 
 export default function Lineup() {
@@ -37,7 +32,7 @@ export default function Lineup() {
   const current1 = list1[page1 - 1];
   const current2 = list2[page2 - 1];
 
-  // fetch data from Firestore
+
   useEffect(() => {
     const unsub1 = onSnapshot(
       query(collection(db, 'L1'), orderBy('createdAt', 'desc')),
@@ -60,21 +55,21 @@ export default function Lineup() {
     };
   }, []);
 
-  // auto-advance L1 every 2 seconds
+  
   useEffect(() => {
     if (list1.length === 0) return;
     const handle = setInterval(() => {
       setPage1(p => (p >= list1.length ? 1 : p + 1));
-    }, 2000);
+    }, 5000);
     return () => clearInterval(handle);
   }, [list1.length]);
 
-  // auto-advance L2 every 2 seconds
+
   useEffect(() => {
     if (list2.length === 0) return;
     const handle = setInterval(() => {
       setPage2(p => (p >= list2.length ? 1 : p + 1));
-    }, 2000);
+    }, 5000);
     return () => clearInterval(handle);
   }, [list2.length]);
 
