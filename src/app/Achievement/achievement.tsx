@@ -132,7 +132,7 @@ export default function AchievementsPage() {
 
       <div className="flex justify-center items-center gap-2 mt-8 text-purple-600 font-medium relative z-10">
         <span className="w-12 h-px bg-purple-800" />
-        <span>Future achievements forthcoming</span>
+        <p className="text-center">Future achievements forthcoming</p>
         <span className="w-12 h-px bg-purple-800" />
       </div>
     </main>

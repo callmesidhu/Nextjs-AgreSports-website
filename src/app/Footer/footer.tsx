@@ -35,9 +35,9 @@ export default function Footer() {
 
 
         <div className="flex gap-6 text-2xl sm:text-3xl justify-center">
-          <a href="https://www.youtube.com/@agresports" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaYoutube /></a>
-          <a href="https://www.instagram.com/agr_esports/" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaInstagram /></a>
-          <a href="https://dsc.gg/agresports" className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaDiscord /></a>
+          <a href="https://www.youtube.com/@agresports" target="_blank"  className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaYoutube /></a>
+          <a href="https://www.instagram.com/agr_esports/" target="_blank"  className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaInstagram /></a>
+          <a href="https://dsc.gg/agresports" target="_blank"  className="hover:text-purple-200 transition-transform hover:scale-125 duration-300"><FaDiscord /></a>
         </div>
 
 
